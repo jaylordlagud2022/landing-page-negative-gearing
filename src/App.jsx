@@ -1,9 +1,9 @@
 import React, { useEffect, useMemo, useState } from "react";
 
-// CAPITAL GAINS TAX LANDING PAGE — React + TailwindCSS
+// INVESTMENT PROPERTY LANDING PAGE — React + TailwindCSS
 // - Sticky header, hero, HubSpot form, benefits, process, testimonials, FAQ, footer
 
-export default function CapitalGainsTaxLanding() {
+export default function InvestmentPropertyLanding() {
   const deadline = useMemo(() => {
     const now = new Date();
     const end = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
@@ -63,84 +63,83 @@ export default function CapitalGainsTaxLanding() {
     <a
       href={href || "#book"}
       onClick={onClick}
-      className="inline-flex items-center justify-center rounded-xl bg-[#E3A750] px-6 py-3 text-white font-semibold shadow-lg hover:brightness-110 transition"
+      className="inline-flex items-center justify-center rounded-xl bg-[#E9631A] px-6 py-3 text-white font-semibold shadow-lg hover:brightness-110 transition"
     >
       {children}
     </a>
   );
-  
+
   return (
-    <div className="min-h-screen bg-[#BCD4CC] text-[#002F45]">
+    <div className="min-h-screen bg-[#EFEFEF] text-[#315762]">
       <div className="w-full flex justify-center">
         <div className="w-full max-w-[1400px]">
 
           {/* Header */}
-          <header className="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-[#002F45]">
+          <header className="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-[#315762]">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="h-9 w-9 rounded-xl bg-[#E3A750] text-white grid place-items-center font-bold">CG</div>
-                <div className="font-bold">CapitalGainsTax<span className="hidden sm:inline">.com.au</span></div>
+                <div className="h-9 w-9 rounded-xl bg-[#E9631A] text-white grid place-items-center font-bold">IP</div>
+                <div className="font-bold">InvestProperty<span className="hidden sm:inline">.com.au</span></div>
               </div>
               <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-                <a href="#how" className="hover:text-[#E3A750]">How it works</a>
-                <a href="#why" className="hover:text-[#E3A750]">Why us</a>
-                <a href="#faq" className="hover:text-[#E3A750]">FAQ</a>
+                <a href="#how" className="hover:text-[#E9631A]">How it works</a>
+                <a href="#why" className="hover:text-[#E9631A]">Why us</a>
+                <a href="#faq" className="hover:text-[#E9631A]">FAQ</a>
               </nav>
               <CTAButton href="#book">Book Free Session</CTAButton>
             </div>
           </header>
- 
+
           {/* Hero */}
           <section className="relative overflow-hidden">
             <div className="commonninja_component pid-ac09a1f9-1fc0-487b-9296-44a74a6ff867">&nbsp;</div>
-
-            <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#BCD4CC]/40 via-white to-[#BCD4CC]/20" />
+            <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#EFEFEF]/40 via-white to-[#EFEFEF]/20" />
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-14 pb-16 md:pt-20 md:pb-20 grid md:grid-cols-2 gap-10 items-center">
 
               {/* Hero Text */}
               <div>
-                <h1 className="mt-4 text-4xl/tight md:text-5xl/tight font-extrabold text-[#002F45]">
-                  Capital Gains Tax Explained. <span className="text-[#E3A750]">How to Reduce What You Owe in Australia.</span>
+                <h1 className="mt-4 text-4xl/tight md:text-5xl/tight font-extrabold text-[#315762]">
+                  Own an Investment Property in Australia. <span className="text-[#E9631A]">Start Building Wealth Now.</span>
                 </h1>
-                <p className="mt-4 text-lg text-[#002F45]">
-                  Learn how capital gains tax applies to Australian property and discover legal ways to minimise your bill when selling your investment.
+                <p className="mt-4 text-lg text-[#315762]">
+                  We help everyday Australians invest confidently with data-driven property research and support.
                 </p>
-                <p className="mt-4 text-[#002F45]">
-                  If you’ve sold or are planning to sell an investment property in Australia, you may be liable for Capital Gains Tax (CGT) under the Australian Taxation Office (ATO). CGT applies to the profit you make on a property sale — but smart investors know how to structure ownership and timing to keep more of their gains.
+                <p className="mt-4 text-[#315762]">
+                  You don’t have to be rich to own investment property in Australia — you just need the right strategy and support.
                 </p>
-                <p className="mt-2 text-[#002F45]">
-                  We break down CGT in plain English, explaining rules like the 6-year exemption, main residence rule, and 50% CGT discount available to investors who hold property longer than 12 months.
+                <p className="mt-2 text-[#315762]">
+                  Our team helps Australians enter the market sooner by assessing borrowing power, leveraging equity, and using government incentives effectively.
                 </p>
-                <p className="mt-2 text-[#002F45]">
-                  Whether you own property in Sydney, Melbourne, Brisbane, or regional areas, we’ll help you understand how local market timing and ownership structure can affect your final tax position.
-                  Our expert team will guide you through the process of calculating your gain, managing your expenses, and using offsets and losses strategically.
+                <p className="mt-2 text-[#315762]">
+                  We guide you through finance approval, property research, and purchase strategy, focusing on markets that offer strong capital growth and solid rental returns.
+                  From Perth to the Sunshine Coast, we pinpoint suburbs showing real movement, helping you buy with confidence and clarity.
                 </p>
-                <p className="mt-2 text-[#002F45]">
-                  With clear advice backed by experience and research, you can sell smarter — and protect your wealth under Australia’s current tax system.
+                <p className="mt-2 text-[#315762]">
+                  If you’ve ever thought “I can’t afford to invest,” it’s time to discover how small steps today can create long-term results.
                 </p>
 
                 <div className="mt-6 flex flex-wrap items-center gap-4">
-                  <CTAButton href="#book">Book your free strategy session today</CTAButton>
+                  <CTAButton href="#book">Kick start your investment journey today</CTAButton>
                 </div>
               </div>
 
               {/* HubSpot Form */}
-              <div id="book" className="bg-white rounded-2xl shadow-xl border border-[#002F45] p-6">
-                <div className="text-sm font-semibold text-[#E3A750]">FREE 30-Min Strategy Session</div>
-                <h3 className="text-2xl font-bold mt-1">Custom CGT Plan</h3>
-                <p className="mt-2 text-sm text-[#002F45]">Discover how to minimise your capital gains legally and efficiently.</p>
+              <div id="book" className="bg-white rounded-2xl shadow-xl border border-[#315762] p-6">
+                <div className="text-sm font-semibold text-[#E9631A]">FREE 30-Min Strategy Session</div>
+                <h3 className="text-2xl font-bold mt-1">Custom Investment Plan</h3>
+                <p className="mt-2 text-sm text-[#315762]">Discover the best path to owning your first investment property efficiently.</p>
 
                 {/* HubSpot form target */}
                 <div id="hubspot-form" className="mt-4"></div>
 
                 {/* Scarcity */}
                 <div className="mt-5 grid grid-cols-2 gap-3">
-                  <div className="rounded-xl bg-[#BCD4CC]/30 border border-[#002F45] p-3 text-center">
-                    <div className="text-xs text-[#002F45]">Spots left this month</div>
-                    <div className="text-2xl font-extrabold text-[#E3A750]">{spotsLeft}</div>
+                  <div className="rounded-xl bg-[#EFEFEF]/30 border border-[#315762] p-3 text-center">
+                    <div className="text-xs text-[#315762]">Spots left this month</div>
+                    <div className="text-2xl font-extrabold text-[#E9631A]">{spotsLeft}</div>
                   </div>
-                  <div className="rounded-xl bg-[#BCD4CC]/30 border border-[#002F45] p-3 text-center">
-                    <div className="text-xs text-[#002F45]">Offer ends in</div>
+                  <div className="rounded-xl bg-[#EFEFEF]/30 border border-[#315762] p-3 text-center">
+                    <div className="text-xs text-[#315762]">Offer ends in</div>
                     <div className="text-sm font-bold">
                       {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
                     </div>
@@ -150,58 +149,48 @@ export default function CapitalGainsTaxLanding() {
             </div>
           </section>
 
-        {/* Urgency / Scarcity */}
-        <section className="py-14 bg-white border-y border-neutral-200">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h3 className="text-2xl font-extrabold">Spots Are Limited — and They Go FAST</h3>
-            <p className="mt-2 text-neutral-600">Only {spotsLeft} free sessions left this month.</p>
-            <div className="mt-6">
-              <CTAButton href="#book">Yes! Save Me a Spot</CTAButton>
+          {/* FAQ */}
+          <section id="faq" className="py-16 bg-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <h2 className="text-3xl font-extrabold">FAQ</h2>
+              <div className="mt-8 grid md:grid-cols-2 gap-6">
+                {[
+                  { q: "Do I need a large deposit to start investing?", a: "No, we help you leverage borrowing power and government incentives to get started with minimal upfront capital." },
+                  { q: "Which cities offer the best growth?", a: "We focus on suburbs across Perth, Sunshine Coast, and other high-growth markets with strong rental returns." },
+                  { q: "Can I invest if I’m a first-time buyer?", a: "Absolutely. Our strategies are tailored to first-time investors, helping you navigate finance, research, and purchase confidently." },
+                  { q: "Is this financial advice?", a: "We provide strategy and education. For personalised advice, always consult a licensed financial adviser." },
+                ].map((f, i) => (
+                  <div key={i} className="rounded-2xl border border-neutral-200 bg-[#EFEFEF] p-6 shadow-sm">
+                    <h3 className="font-bold">{f.q}</h3>
+                    <p className="mt-2 text-[#315762]">{f.a}</p>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* FAQ */}
-        <section id="faq" className="py-16 bg-neutral-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-extrabold">FAQ</h2>
-            <div className="mt-8 grid md:grid-cols-2 gap-6">
-              {[
-                { q: "Is negative gearing still worth it with today’s rates?", a: "It can be—if the numbers stack up. We model repayments, rent scenarios, and tax offsets so you can see your likely after-tax cashflow before you buy." },
-                { q: "P&I or Interest-Only?", a: "We compare both. IO may improve short-term cashflow; P&I builds equity. Your plan shows total interest, repayments, and after-tax position under each option." },
-                { q: "Will this work for my income bracket?", a: "That’s exactly what we assess. Your marginal tax rate strongly affects the benefit—your session includes a personalised model." },
-                { q: "Is this tax/financial advice?", a: "It’s education and strategy modelling. Confirm specifics with a licensed tax agent or financial adviser before acting." },
-              ].map((f, i) => (
-                <div key={i} className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
-                  <h3 className="font-bold">{f.q}</h3>
-                  <p className="mt-2 text-neutral-700">{f.a}</p>
-                </div>
-              ))}
+          {/* Compliance + Final CTA */}
+          <section className="py-16">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+              <p className="text-xs text-neutral-500">General information only. Not financial or tax advice. Consider your circumstances and seek licensed advice before acting.</p>
+              <div className="mt-6">
+                <CTAButton href="#book">Book My FREE Investment Strategy Session Now</CTAButton>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* Compliance + Final CTA */}
-        <section className="py-16">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p className="text-xs text-neutral-500">General information only. Not financial or tax advice. Past performance is not a reliable indicator of future results. Consider your circumstances and seek licensed advice before acting.</p>
-            <div className="mt-6">
-              <CTAButton href="#book">Book My FREE Negative Gearing Strategy Session Now</CTAButton>
+          {/* Footer */}
+          <footer className="py-10 bg-[#315762] text-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="text-sm">© 2025 InvestProperty.com.au. All rights reserved.</div>
+              <div className="flex items-center gap-6 text-sm">
+                <a href="#" className="hover:text-[#E9631A]">Privacy Policy</a>
+                <a href="#" className="hover:text-[#E9631A]">Terms</a>
+                <a href="#" className="hover:text-[#E9631A]">Contact</a>
+              </div>
             </div>
-          </div>
-        </section>
+          </footer>
 
-        {/* Footer */}
-        <footer className="py-10 bg-neutral-900 text-neutral-300">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="text-sm">© 2025 NegativeGearingExplained.com.au. All rights reserved.</div>
-            <div className="flex items-center gap-6 text-sm">
-              <a href="#" className="hover:text-white">Privacy Policy</a>
-              <a href="#" className="hover:text-white">Terms</a>
-              <a href="#" className="hover:text-white">Contact</a>
-            </div>
-          </div>
-        </footer>
         </div>
       </div>
     </div>
