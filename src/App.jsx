@@ -62,7 +62,7 @@ export default function CapitalGainsTaxLanding() {
       href="https://meetings.hubspot.com/charlie-jesaulenko-ash"
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center justify-center rounded-xl bg-[#E12826] px-6 py-3 text-white font-semibold shadow-lg hover:brightness-110 transition"
+      className="inline-flex items-center justify-center rounded-xl bg-[#E4281F] px-6 py-3 text-white font-semibold shadow-lg hover:brightness-110 transition"
     >
       {children}
     </a>
@@ -77,75 +77,69 @@ export default function CapitalGainsTaxLanding() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f5fafa] text-[#299f93] scroll-smooth">
+    <div className="min-h-screen bg-[#FCEEC9] text-[#E4281F] scroll-smooth">
       <div className="w-full flex justify-center">
         <div className="w-full max-w-[1400px]">
 
           {/* Header */}
-          <header className="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-[#299f93]">
+          <header className="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-[#E4281F]">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <img src={propertyIcon} alt="PropertyInvestors Icon" className="h-9 w-9 object-contain" />
-                <a href="https://propertyinvestors.com.au" className="font-bold text-[#299f93] hover:text-[#E12826]">propertyinvestors.com.au</a>
+                <a href="https://propertyinvestors.com.au" className="font-bold text-[#E4281F] hover:text-[#FFBE54]">propertyinvestors.com.au</a>
               </div>
-              <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-[#299f93]">
-                <a href="#how" onClick={(e) => handleScroll(e, "how")} className="hover:text-[#E12826]">How it works</a>
-                <a href="#why" onClick={(e) => handleScroll(e, "why")} className="hover:text-[#E12826]">Why us</a>
-                <a href="#faq" onClick={(e) => handleScroll(e, "faq")} className="hover:text-[#E12826]">FAQ</a>
+              <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-[#E4281F]">
+                <a href="#how" onClick={(e) => handleScroll(e, "how")} className="hover:text-[#FFBE54]">How it works</a>
+                <a href="#why" onClick={(e) => handleScroll(e, "why")} className="hover:text-[#FFBE54]">Why us</a>
+                <a href="#faq" onClick={(e) => handleScroll(e, "faq")} className="hover:text-[#FFBE54]">FAQ</a>
               </nav>
-              <CTAButton>Secure Your Strategy Session</CTAButton>
+              <CTAButton>Book a Free Strategy Call</CTAButton>
             </div>
           </header>
 
           {/* Hero */}
           <section className="relative overflow-hidden">
             <div className="commonninja_component pid-ac09a1f9-1fc0-487b-9296-44a74a6ff867">&nbsp;</div>
-            <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#f5fafa]/40 via-white to-[#f5fafa]/20" />
+            <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#FCEEC9]/40 via-white to-[#FCEEC9]/20" />
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-14 pb-16 md:pt-20 md:pb-20 grid md:grid-cols-2 gap-10">
 
               {/* Hero Text */}
               <div>
-                <h1 className="mt-4 text-4xl/tight md:text-5xl/tight font-extrabold text-[#299f93]">
-                  Property Investing in Australia Explained <span className="text-[#E12826]">Clearly and Simply.</span>
+                <h1 className="mt-4 text-4xl/tight md:text-5xl/tight font-extrabold text-[#E4281F]">
+                  Why Buy Investment Property in Australia? <span className="text-[#FFBE54]">Here’s What You Need to Know.</span>
                 </h1>
-                <p className="mt-4 text-lg text-[#299f93]">
-                  Your roadmap to building a high-performing property portfolio with confidence.
+                <p className="mt-4 text-lg text-[#E4281F]">
+                  Discover why property remains Australia’s most trusted path to wealth creation.
                 </p>
-                <p className="mt-2 text-[#299f93]">
-                  Property investing in Australia can feel overwhelming but it doesn’t need to be.
+                <p className="mt-2 text-[#E4281F]">
+                  Australians have long turned to property as a safe and reliable way to grow wealth. With strong population growth, limited housing supply, and a stable economy, the fundamentals remain solid but knowing where and how to invest makes all the difference.
                 </p>
-                <p className="mt-2 text-[#299f93]">
-                  We simplify the process for you, breaking down complex topics like equity, gearing, and depreciation into clear, actionable steps.
+                <p className="mt-2 text-[#E4281F]">
+                  We combine data, insight, and experience to show you why property continues to outperform other asset classes in Australia. From tax advantages like negative gearing and depreciation to long-term capital growth, we’ll help you understand how property builds wealth faster and safer.
                 </p>
-                <p className="mt-2 text-[#299f93]">
-                  Our advisors research the strongest markets across the country identifying suburbs positioned for growth through infrastructure, migration, and rental demand.
-                </p>
-                <p className="mt-2 text-[#299f93]">
-                  We’ll help you understand when to buy, what to buy, and how to finance your portfolio correctly within Australian lending rules.
-                </p>
-                <p className="mt-2 text-[#299f93]">
-                  With transparent advice and a proven research framework, you’ll build confidence, knowledge, and momentum in your property journey.
+                <p className="mt-2 text-[#E4281F]">
+                  We also help you compare investment strategies across states, from high-yield regional areas to long-term growth corridors in major cities.
                 </p>
                 <div className="mt-6 flex flex-wrap items-center gap-4">
-                  <CTAButton>Secure Your Property Strategy Session Today</CTAButton>
+                  <CTAButton>Book a Free Strategy Call</CTAButton>
                 </div>
               </div>
 
               {/* HubSpot Form */}
-              <div id="book" className="bg-white rounded-2xl shadow-xl border border-[#299f93] p-6">
-                <div className="text-sm font-semibold text-[#E12826]">FREE 30-Min Strategy Session</div>
+              <div id="book" className="bg-white rounded-2xl shadow-xl border border-[#E4281F] p-6">
+                <div className="text-sm font-semibold text-[#FFBE54]">FREE 30-Min Strategy Session</div>
                 <h3 className="text-2xl font-bold mt-1">Custom Property Plan</h3>
-                <p className="mt-2 text-sm text-[#299f93]">Discover how to confidently start and grow your property portfolio.</p>
+                <p className="mt-2 text-sm text-[#E4281F]">Discover how to confidently start and grow your property portfolio.</p>
                 <div id="hubspot-form" className="mt-4"></div>
 
                 {/* Scarcity */}
                 <div className="mt-5 grid grid-cols-2 gap-3">
-                  <div className="rounded-xl bg-[#f5fafa]/30 border border-[#299f93] p-3 text-center">
-                    <div className="text-xs text-[#299f93]">Spots left this month</div>
-                    <div className="text-2xl font-extrabold text-[#E12826]">{spotsLeft}</div>
+                  <div className="rounded-xl bg-[#FCEEC9]/30 border border-[#E4281F] p-3 text-center">
+                    <div className="text-xs text-[#E4281F]">Spots left this month</div>
+                    <div className="text-2xl font-extrabold text-[#FFBE54]">{spotsLeft}</div>
                   </div>
-                  <div className="rounded-xl bg-[#f5fafa]/30 border border-[#299f93] p-3 text-center">
-                    <div className="text-xs text-[#299f93]">Offer ends in</div>
+                  <div className="rounded-xl bg-[#FCEEC9]/30 border border-[#E4281F] p-3 text-center">
+                    <div className="text-xs text-[#E4281F]">Offer ends in</div>
                     <div className="text-sm font-bold">
                       {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
                     </div>
@@ -156,19 +150,19 @@ export default function CapitalGainsTaxLanding() {
           </section>
 
           {/* How It Works */}
-          <section id="how" className="py-16 bg-[#f5fafa]">
+          <section id="how" className="py-16 bg-[#FCEEC9]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2 className="text-3xl font-extrabold text-[#299f93]">How It Works</h2>
+              <h2 className="text-3xl font-extrabold text-[#E4281F]">How It Works</h2>
               <div className="mt-8 grid md:grid-cols-3 gap-6">
                 {[
                   { step: "1", title: "Book Your Session", desc: "Pick a time that suits you for a free 30-min consultation." },
                   { step: "2", title: "We Analyse Your Situation", desc: "Our team models your investment strategy and identifies opportunities." },
                   { step: "3", title: "Receive Your Action Plan", desc: "Get a clear roadmap for confident property investing." },
                 ].map((s, i) => (
-                  <div key={i} className="rounded-2xl border border-[#299f93] bg-white p-6 shadow-sm">
-                    <div className="h-10 w-10 rounded-xl bg-[#E12826] text-white grid place-items-center font-bold">{s.step}</div>
-                    <h3 className="mt-4 font-bold text-lg text-[#299f93]">{s.title}</h3>
-                    <p className="mt-1 text-[#299f93]">{s.desc}</p>
+                  <div key={i} className="rounded-2xl border border-[#E4281F] bg-white p-6 shadow-sm">
+                    <div className="h-10 w-10 rounded-xl bg-[#FFBE54] text-white grid place-items-center font-bold">{s.step}</div>
+                    <h3 className="mt-4 font-bold text-lg text-[#E4281F]">{s.title}</h3>
+                    <p className="mt-1 text-[#E4281F]">{s.desc}</p>
                   </div>
                 ))}
               </div>
@@ -178,17 +172,17 @@ export default function CapitalGainsTaxLanding() {
           {/* Why Us */}
           <section id="why" className="py-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2 className="text-3xl font-extrabold text-[#299f93]">Why Work With Us</h2>
+              <h2 className="text-3xl font-extrabold text-[#E4281F]">Why Work With Us</h2>
               <div className="mt-8 grid md:grid-cols-3 gap-6">
                 {[
                   { title: "Expert Property Advice", desc: "Decades of experience helping Australians invest wisely." },
                   { title: "Data-Driven Insights", desc: "We research the strongest markets for growth and rental returns." },
                   { title: "Clear, Actionable Strategies", desc: "Step-by-step guidance to simplify investing and build confidence." },
                 ].map((w, i) => (
-                  <div key={i} className="rounded-2xl border border-[#299f93] bg-white p-6 shadow-sm">
-                    <div className="h-10 w-10 rounded-xl bg-[#f5fafa] text-[#299f93] grid place-items-center font-bold">{i+1}</div>
-                    <h3 className="mt-4 font-bold text-lg text-[#299f93]">{w.title}</h3>
-                    <p className="mt-1 text-[#299f93]">{w.desc}</p>
+                  <div key={i} className="rounded-2xl border border-[#E4281F] bg-white p-6 shadow-sm">
+                    <div className="h-10 w-10 rounded-xl bg-[#FCEEC9] text-[#E4281F] grid place-items-center font-bold">{i+1}</div>
+                    <h3 className="mt-4 font-bold text-lg text-[#E4281F]">{w.title}</h3>
+                    <p className="mt-1 text-[#E4281F]">{w.desc}</p>
                   </div>
                 ))}
               </div>
@@ -196,9 +190,9 @@ export default function CapitalGainsTaxLanding() {
           </section>
 
           {/* FAQ */}
-          <section id="faq" className="py-16 bg-[#f5fafa]">
+          <section id="faq" className="py-16 bg-[#FCEEC9]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2 className="text-3xl font-extrabold text-[#299f93]">FAQ</h2>
+              <h2 className="text-3xl font-extrabold text-[#E4281F]">FAQ</h2>
               <div className="mt-8 grid md:grid-cols-2 gap-6">
                 {[
                   { q: "Do I need to be wealthy to invest?", a: "No, with the right guidance, anyone can start investing in property." },
@@ -206,9 +200,9 @@ export default function CapitalGainsTaxLanding() {
                   { q: "What if I’m a first-time investor?", a: "Our team guides you step-by-step from finance approval to purchase strategy." },
                   { q: "Is this financial advice?", a: "This is general information. Always seek licensed advice for your specific situation." },
                 ].map((f, i) => (
-                  <div key={i} className="rounded-2xl border border-[#f5fafa] bg-white p-6 shadow-sm">
-                    <h3 className="font-bold text-[#299f93]">{f.q}</h3>
-                    <p className="mt-2 text-[#299f93]">{f.a}</p>
+                  <div key={i} className="rounded-2xl border border-[#FCEEC9] bg-white p-6 shadow-sm">
+                    <h3 className="font-bold text-[#E4281F]">{f.q}</h3>
+                    <p className="mt-2 text-[#E4281F]">{f.a}</p>
                   </div>
                 ))}
               </div>
@@ -218,21 +212,21 @@ export default function CapitalGainsTaxLanding() {
           {/* Final CTA */}
           <section className="py-16">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-              <p className="text-xs text-[#299f93]">General information only. Not financial advice. Past performance is not a reliable indicator of future results. Consider your circumstances and seek licensed advice before acting.</p>
+              <p className="text-xs text-[#E4281F]">General information only. Not financial advice. Past performance is not a reliable indicator of future results. Consider your circumstances and seek licensed advice before acting.</p>
               <div className="mt-6">
-                <CTAButton>Secure Your Property Strategy Session Today</CTAButton>
+                <CTAButton>Book a Free Strategy Call</CTAButton>
               </div>
             </div>
           </section>
 
           {/* Footer */}
-          <footer className="py-10 bg-[#299f93] text-white">
+          <footer className="py-10 bg-[#E4281F] text-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
               <div className="text-sm">© 2025 propertyinvestors.com.au. All rights reserved.</div>
               <div className="flex items-center gap-6 text-sm">
-                <a href="https://propertyinvestors.com.au/privacy-policy/" className="hover:text-[#E12826]">Privacy Policy</a>
-                <a href="https://propertyinvestors.com.au/legal-statements/" className="hover:text-[#E12826]">Terms</a>
-                <a href="https://meetings.hubspot.com/charlie-jesaulenko-ash" className="hover:text-[#E12826]">Contact</a>
+                <a href="https://propertyinvestors.com.au/privacy-policy/" className="hover:text-[#FFBE54]">Privacy Policy</a>
+                <a href="https://propertyinvestors.com.au/legal-statements/" className="hover:text-[#FFBE54]">Terms</a>
+                <a href="https://meetings.hubspot.com/charlie-jesaulenko-ash" className="hover:text-[#FFBE54]">Contact</a>
               </div>
             </div>
           </footer>
