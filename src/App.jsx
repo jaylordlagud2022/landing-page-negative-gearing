@@ -1,9 +1,9 @@
 import React, { useEffect, useMemo, useState } from "react";
 
-// INVESTMENT PROPERTY LANDING PAGE — React + TailwindCSS
-// - Sticky header, hero, HubSpot form, benefits, process, testimonials, FAQ, footer
+// PROPERTY INVESTING LANDING PAGE — React + TailwindCSS
+// - Sticky header, hero, HubSpot form, benefits, FAQ, footer
 
-export default function InvestmentPropertyLanding() {
+export default function PropertyInvestingLanding() {
   const deadline = useMemo(() => {
     const now = new Date();
     const end = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
@@ -42,7 +42,6 @@ export default function InvestmentPropertyLanding() {
     cnScript.defer = true;
     document.body.appendChild(cnScript);
 
-    // Cleanup scripts on unmount
     return () => {
       document.body.removeChild(hsScript);
       document.body.removeChild(cnScript);
@@ -63,28 +62,28 @@ export default function InvestmentPropertyLanding() {
     <a
       href={href || "#book"}
       onClick={onClick}
-      className="inline-flex items-center justify-center rounded-xl bg-[#E9631A] px-6 py-3 text-white font-semibold shadow-lg hover:brightness-110 transition"
+      className="inline-flex items-center justify-center rounded-xl bg-[#E12826] px-6 py-3 text-white font-semibold shadow-lg hover:brightness-110 transition"
     >
       {children}
     </a>
   );
 
   return (
-    <div className="min-h-screen bg-[#EFEFEF] text-[#315762]">
+    <div className="min-h-screen bg-[#f5fafa] text-[#299f93]">
       <div className="w-full flex justify-center">
         <div className="w-full max-w-[1400px]">
 
           {/* Header */}
-          <header className="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-[#315762]">
+          <header className="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-[#299f93]">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="h-9 w-9 rounded-xl bg-[#E9631A] text-white grid place-items-center font-bold">IP</div>
-                <div className="font-bold">InvestProperty<span className="hidden sm:inline">.com.au</span></div>
+                <div className="h-9 w-9 rounded-xl bg-[#E12826] text-white grid place-items-center font-bold">PI</div>
+                <div className="font-bold">PropertyInvestingExplained<span className="hidden sm:inline">.com.au</span></div>
               </div>
               <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
-                <a href="#how" className="hover:text-[#E9631A]">How it works</a>
-                <a href="#why" className="hover:text-[#E9631A]">Why us</a>
-                <a href="#faq" className="hover:text-[#E9631A]">FAQ</a>
+                <a href="#how" className="hover:text-[#E12826]">How it works</a>
+                <a href="#why" className="hover:text-[#E12826]">Why us</a>
+                <a href="#faq" className="hover:text-[#E12826]">FAQ</a>
               </nav>
               <CTAButton href="#book">Book Free Session</CTAButton>
             </div>
@@ -93,53 +92,53 @@ export default function InvestmentPropertyLanding() {
           {/* Hero */}
           <section className="relative overflow-hidden">
             <div className="commonninja_component pid-ac09a1f9-1fc0-487b-9296-44a74a6ff867">&nbsp;</div>
-            <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#EFEFEF]/40 via-white to-[#EFEFEF]/20" />
+            <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#f5fafa]/40 via-white to-[#f5fafa]/20" />
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-14 pb-16 md:pt-20 md:pb-20 grid md:grid-cols-2 gap-10 items-center">
 
               {/* Hero Text */}
               <div>
-                <h1 className="mt-4 text-4xl/tight md:text-5xl/tight font-extrabold text-[#315762]">
-                  Own an Investment Property in Australia. <span className="text-[#E9631A]">Start Building Wealth Now.</span>
+                <h1 className="mt-4 text-4xl/tight md:text-5xl/tight font-extrabold text-[#299f93]">
+                  Property Investing in Australia <span className="text-[#E12826]">Explained Clearly and Simply.</span>
                 </h1>
-                <p className="mt-4 text-lg text-[#315762]">
-                  We help everyday Australians invest confidently with data-driven property research and support.
+                <p className="mt-4 text-lg text-[#299f93]">
+                  Your roadmap to building a high-performing property portfolio with confidence.
                 </p>
-                <p className="mt-4 text-[#315762]">
-                  You don’t have to be rich to own investment property in Australia — you just need the right strategy and support.
+                <p className="mt-4 text-[#299f93]">
+                  Property investing in Australia can feel overwhelming but it doesn’t need to be.
                 </p>
-                <p className="mt-2 text-[#315762]">
-                  Our team helps Australians enter the market sooner by assessing borrowing power, leveraging equity, and using government incentives effectively.
+                <p className="mt-2 text-[#299f93]">
+                  We simplify the process for you, breaking down complex topics like equity, gearing, and depreciation into clear, actionable steps.
                 </p>
-                <p className="mt-2 text-[#315762]">
-                  We guide you through finance approval, property research, and purchase strategy, focusing on markets that offer strong capital growth and solid rental returns.
-                  From Perth to the Sunshine Coast, we pinpoint suburbs showing real movement, helping you buy with confidence and clarity.
+                <p className="mt-2 text-[#299f93]">
+                  Our advisors research the strongest markets across the country identifying suburbs positioned for growth through infrastructure, migration, and rental demand.
                 </p>
-                <p className="mt-2 text-[#315762]">
-                  If you’ve ever thought “I can’t afford to invest,” it’s time to discover how small steps today can create long-term results.
+                <p className="mt-2 text-[#299f93]">
+                  We’ll help you understand when to buy, what to buy, and how to finance your portfolio correctly within Australian lending rules.
+                </p>
+                <p className="mt-2 text-[#299f93]">
+                  With transparent advice and a proven research framework, you’ll build confidence, knowledge, and momentum in your property journey.
                 </p>
 
                 <div className="mt-6 flex flex-wrap items-center gap-4">
-                  <CTAButton href="#book">Kick start your investment journey today</CTAButton>
+                  <CTAButton href="#book">Secure Your Property Strategy Session Today</CTAButton>
                 </div>
               </div>
 
               {/* HubSpot Form */}
-              <div id="book" className="bg-white rounded-2xl shadow-xl border border-[#315762] p-6">
-                <div className="text-sm font-semibold text-[#E9631A]">FREE 30-Min Strategy Session</div>
-                <h3 className="text-2xl font-bold mt-1">Custom Investment Plan</h3>
-                <p className="mt-2 text-sm text-[#315762]">Discover the best path to owning your first investment property efficiently.</p>
+              <div id="book" className="bg-white rounded-2xl shadow-xl border border-[#299f93] p-6">
+                <div className="text-sm font-semibold text-[#E12826]">FREE 30-Min Strategy Session</div>
+                <h3 className="text-2xl font-bold mt-1">Custom Property Plan</h3>
+                <p className="mt-2 text-sm text-[#299f93]">Discover the best path to building your property portfolio efficiently.</p>
 
-                {/* HubSpot form target */}
                 <div id="hubspot-form" className="mt-4"></div>
 
-                {/* Scarcity */}
                 <div className="mt-5 grid grid-cols-2 gap-3">
-                  <div className="rounded-xl bg-[#EFEFEF]/30 border border-[#315762] p-3 text-center">
-                    <div className="text-xs text-[#315762]">Spots left this month</div>
-                    <div className="text-2xl font-extrabold text-[#E9631A]">{spotsLeft}</div>
+                  <div className="rounded-xl bg-[#f5fafa]/30 border border-[#299f93] p-3 text-center">
+                    <div className="text-xs text-[#299f93]">Spots left this month</div>
+                    <div className="text-2xl font-extrabold text-[#E12826]">{spotsLeft}</div>
                   </div>
-                  <div className="rounded-xl bg-[#EFEFEF]/30 border border-[#315762] p-3 text-center">
-                    <div className="text-xs text-[#315762]">Offer ends in</div>
+                  <div className="rounded-xl bg-[#f5fafa]/30 border border-[#299f93] p-3 text-center">
+                    <div className="text-xs text-[#299f93]">Offer ends in</div>
                     <div className="text-sm font-bold">
                       {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
                     </div>
@@ -155,14 +154,14 @@ export default function InvestmentPropertyLanding() {
               <h2 className="text-3xl font-extrabold">FAQ</h2>
               <div className="mt-8 grid md:grid-cols-2 gap-6">
                 {[
-                  { q: "Do I need a large deposit to start investing?", a: "No, we help you leverage borrowing power and government incentives to get started with minimal upfront capital." },
-                  { q: "Which cities offer the best growth?", a: "We focus on suburbs across Perth, Sunshine Coast, and other high-growth markets with strong rental returns." },
-                  { q: "Can I invest if I’m a first-time buyer?", a: "Absolutely. Our strategies are tailored to first-time investors, helping you navigate finance, research, and purchase confidently." },
-                  { q: "Is this financial advice?", a: "We provide strategy and education. For personalised advice, always consult a licensed financial adviser." },
+                  { q: "Do I need a large deposit?", a: "No, our strategies are designed to get you started with minimal upfront capital." },
+                  { q: "Which cities have the best growth?", a: "We focus on high-growth suburbs with strong rental demand and capital appreciation potential." },
+                  { q: "Can I invest as a first-timer?", a: "Yes! We tailor strategies to help first-time investors navigate finance, research, and purchase confidently." },
+                  { q: "Is this financial advice?", a: "We provide strategy guidance and education. Always consult a licensed adviser for personalised advice." },
                 ].map((f, i) => (
-                  <div key={i} className="rounded-2xl border border-neutral-200 bg-[#EFEFEF] p-6 shadow-sm">
+                  <div key={i} className="rounded-2xl border border-[#299f93] bg-[#f5fafa] p-6 shadow-sm">
                     <h3 className="font-bold">{f.q}</h3>
-                    <p className="mt-2 text-[#315762]">{f.a}</p>
+                    <p className="mt-2 text-[#299f93]">{f.a}</p>
                   </div>
                 ))}
               </div>
@@ -172,21 +171,21 @@ export default function InvestmentPropertyLanding() {
           {/* Compliance + Final CTA */}
           <section className="py-16">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-              <p className="text-xs text-neutral-500">General information only. Not financial or tax advice. Consider your circumstances and seek licensed advice before acting.</p>
+              <p className="text-xs text-neutral-500">General information only. Not financial advice. Seek licensed advice for your circumstances.</p>
               <div className="mt-6">
-                <CTAButton href="#book">Book My FREE Investment Strategy Session Now</CTAButton>
+                <CTAButton href="#book">Book My FREE Property Strategy Session Now</CTAButton>
               </div>
             </div>
           </section>
 
           {/* Footer */}
-          <footer className="py-10 bg-[#315762] text-white">
+          <footer className="py-10 bg-[#299f93] text-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-              <div className="text-sm">© 2025 InvestProperty.com.au. All rights reserved.</div>
+              <div className="text-sm">© 2025 PropertyInvestingExplained.com.au. All rights reserved.</div>
               <div className="flex items-center gap-6 text-sm">
-                <a href="#" className="hover:text-[#E9631A]">Privacy Policy</a>
-                <a href="#" className="hover:text-[#E9631A]">Terms</a>
-                <a href="#" className="hover:text-[#E9631A]">Contact</a>
+                <a href="#" className="hover:text-[#E12826]">Privacy Policy</a>
+                <a href="#" className="hover:text-[#E12826]">Terms</a>
+                <a href="#" className="hover:text-[#E12826]">Contact</a>
               </div>
             </div>
           </footer>
