@@ -59,7 +59,7 @@ export default function NegativeGearingExplainedLanding() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="h-9 w-9 rounded-xl bg-orange-600 text-white grid place-items-center font-bold">NG</div>
-              <div className="font-bold">NegativeGearingExplained<span className="hidden sm:inline">.com.au</span></div>
+              <div className="font-bold">1231NegativeGearingExplained<span className="hidden sm:inline">.com.au</span></div>
             </div>
             <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
               <a href="#how" className="hover:text-orange-700">How it works</a>
