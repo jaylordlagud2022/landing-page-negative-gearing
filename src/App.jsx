@@ -11,7 +11,7 @@ export default function CapitalGainsTaxLanding() {
 
   const [timeLeft, setTimeLeft] = useState(getTimeRemaining(deadline));
   const [spotsLeft, setSpotsLeft] = useState(15);
-  const [showWheel, setShowWheel] = useState(false); // Wheel popup state
+  const [showWheel, setShowWheel] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => setTimeLeft(getTimeRemaining(deadline)), 1000);
@@ -64,7 +64,7 @@ export default function CapitalGainsTaxLanding() {
 
   const CTAButton = ({ children }) => (
     <a
-      href="https://meetings.hubspot.com/charlie-jesaulenko-ash?__hstc=142318509.3d6b061e2d72e4983c91d7bc671929fa.1763108544732.1764637505673.1764656050077.12&__hssc=142318509.1.1764656050077&__hsfp=331823229book"
+      href="https://meetings.hubspot.com/charlie-jesaulenko-ash"
       target="_blank"
       rel="noopener noreferrer"
       className="inline-flex items-center justify-center rounded-xl bg-[#E3A750] px-6 py-3 text-white font-semibold shadow-lg hover:brightness-110 transition"
@@ -96,10 +96,7 @@ export default function CapitalGainsTaxLanding() {
 
           {/* Hero */}
           <section className="relative overflow-hidden">
-            {/* Wheel popup */}
             <div className="commonninja_component pid-ac09a1f9-1fc0-487b-9296-44a74a6ff867">&nbsp;</div>
-
-
             <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#BCD4CC]/40 via-white to-[#BCD4CC]/20" />
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-14 pb-16 md:pt-20 md:pb-20 grid md:grid-cols-2 gap-10 items-center">
 
@@ -111,20 +108,9 @@ export default function CapitalGainsTaxLanding() {
                 <p className="mt-4 text-lg text-[#002F45]">
                   Learn how capital gains tax applies to Australian property and discover legal ways to minimise your bill when selling your investment.
                 </p>
-                <p className="mt-4 text-[#002F45]">
-                  If you’ve sold or are planning to sell an investment property in Australia, you may be liable for Capital Gains Tax (CGT) under the Australian Taxation Office (ATO). CGT applies to the profit you make on a property sale — but smart investors know how to structure ownership and timing to keep more of their gains.
-                </p>
                 <p className="mt-2 text-[#002F45]">
-                  We break down CGT in plain English, explaining rules like the 6-year exemption, main residence rule, and 50% CGT discount available to investors who hold property longer than 12 months.
+                  Whether you own property in Sydney, Melbourne, Brisbane, or regional areas, our expert team will guide you on exemptions, discounts, and structuring to reduce your CGT liability.
                 </p>
-                <p className="mt-2 text-[#002F45]">
-                  Whether you own property in Sydney, Melbourne, Brisbane, or regional areas, we’ll help you understand how local market timing and ownership structure can affect your final tax position.
-                  Our expert team will guide you through the process of calculating your gain, managing your expenses, and using offsets and losses strategically.
-                </p>
-                <p className="mt-2 text-[#002F45]">
-                  With clear advice backed by experience and research, you can sell smarter — and protect your wealth under Australia’s current tax system.
-                </p>
-
                 <div className="mt-6 flex flex-wrap items-center gap-4">
                   <CTAButton>Book your free strategy session today</CTAButton>
                 </div>
@@ -154,16 +140,56 @@ export default function CapitalGainsTaxLanding() {
             </div>
           </section>
 
+          {/* How It Works */}
+          <section id="how" className="py-16 bg-[#D7E5E2]">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <h2 className="text-3xl font-extrabold text-[#002F45]">How It Works</h2>
+              <div className="mt-8 grid md:grid-cols-3 gap-6">
+                {[
+                  { step: "1", title: "Book Your Session", desc: "Pick a time that suits you for a free 30-min consultation." },
+                  { step: "2", title: "We Analyse Your Situation", desc: "Our team models your CGT liability and identifies opportunities to save." },
+                  { step: "3", title: "Receive Your Action Plan", desc: "Get a clear strategy with exemptions, discounts, and structuring advice." },
+                ].map((s, i) => (
+                  <div key={i} className="rounded-2xl border border-[#002F45] bg-white p-6 shadow-sm">
+                    <div className="h-10 w-10 rounded-xl bg-[#E3A750] text-white grid place-items-center font-bold">{s.step}</div>
+                    <h3 className="mt-4 font-bold text-lg text-[#002F45]">{s.title}</h3>
+                    <p className="mt-1 text-[#002F45]">{s.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Why Us */}
+          <section id="why" className="py-16">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <h2 className="text-3xl font-extrabold text-[#002F45]">Why Work With Us</h2>
+              <div className="mt-8 grid md:grid-cols-3 gap-6">
+                {[
+                  { title: "Expertise in CGT", desc: "Decades of experience helping investors reduce CGT liabilities legally." },
+                  { title: "ATO-Aligned Advice", desc: "We follow Australian Taxation Office rules to keep you compliant." },
+                  { title: "Clear, Actionable Strategies", desc: "You get step-by-step guidance, not vague advice." },
+                ].map((w, i) => (
+                  <div key={i} className="rounded-2xl border border-[#002F45] bg-white p-6 shadow-sm">
+                    <div className="h-10 w-10 rounded-xl bg-[#BCD4CC] text-[#002F45] grid place-items-center font-bold">{i+1}</div>
+                    <h3 className="mt-4 font-bold text-lg text-[#002F45]">{w.title}</h3>
+                    <p className="mt-1 text-[#002F45]">{w.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
           {/* FAQ */}
           <section id="faq" className="py-16 bg-neutral-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <h2 className="text-3xl font-extrabold">FAQ</h2>
               <div className="mt-8 grid md:grid-cols-2 gap-6">
                 {[
-                  { q: "Is negative gearing still worth it with today’s rates?", a: "It can be—if the numbers stack up. We model repayments, rent scenarios, and tax offsets so you can see your likely after-tax cashflow before you buy." },
-                  { q: "P&I or Interest-Only?", a: "We compare both. IO may improve short-term cashflow; P&I builds equity. Your plan shows total interest, repayments, and after-tax position under each option." },
-                  { q: "Will this work for my income bracket?", a: "That’s exactly what we assess. Your marginal tax rate strongly affects the benefit—your session includes a personalised model." },
-                  { q: "Is this tax/financial advice?", a: "It’s education and strategy modelling. Confirm specifics with a licensed tax agent or financial adviser before acting." },
+                  { q: "Do I have to pay CGT on my main residence?", a: "Typically, your main residence is exempt, but rules depend on ownership periods and partial use." },
+                  { q: "How long do I need to hold property for the 50% discount?", a: "You must hold the property for more than 12 months to qualify for the CGT discount." },
+                  { q: "Can I use previous losses to offset gains?", a: "Yes, capital losses can offset gains from other properties or investments." },
+                  { q: "Is this personal financial advice?", a: "No, this is education and strategy guidance. Always confirm specifics with a licensed tax adviser." },
                 ].map((f, i) => (
                   <div key={i} className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
                     <h3 className="font-bold">{f.q}</h3>
@@ -179,7 +205,7 @@ export default function CapitalGainsTaxLanding() {
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
               <p className="text-xs text-neutral-500">General information only. Not financial or tax advice. Past performance is not a reliable indicator of future results. Consider your circumstances and seek licensed advice before acting.</p>
               <div className="mt-6">
-                <CTAButton>Book My FREE Strategy Session Now</CTAButton>
+                <CTAButton>Book My FREE Capital Gains Strategy Session Now</CTAButton>
               </div>
             </div>
           </section>
