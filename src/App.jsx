@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react"; 
 import propertyIcon from "./assets/propertyinvestors_icon.webp";
 
-// CAPITAL GAINS TAX LANDING PAGE — React + TailwindCSS
 export default function CapitalGainsTaxLanding() {
   const deadline = useMemo(() => {
     const now = new Date();
@@ -19,10 +18,8 @@ export default function CapitalGainsTaxLanding() {
   }, [deadline]);
 
   useEffect(() => {
-    // Load HubSpot form
     const hsScript = document.createElement("script");
     hsScript.src = "//js.hsforms.net/forms/embed/v2.js";
-    hsScript.type = "text/javascript";
     hsScript.async = true;
     hsScript.onload = () => {
       if (window.hbspt) {
@@ -36,13 +33,11 @@ export default function CapitalGainsTaxLanding() {
     };
     document.body.appendChild(hsScript);
 
-    // Load Common Ninja Wheel
     const cnScript = document.createElement("script");
     cnScript.src = "https://cdn.commoninja.com/sdk/latest/commonninja.js";
     cnScript.defer = true;
     document.body.appendChild(cnScript);
 
-    // Auto show wheel after 3s
     const popupTimer = setTimeout(() => setShowWheel(true), 3000);
 
     return () => {
@@ -73,8 +68,17 @@ export default function CapitalGainsTaxLanding() {
     </a>
   );
 
+  // Smooth scroll handler
+  const handleScroll = (e, id) => {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-[#BCD4CC] text-[#002F45]">
+    <div className="min-h-screen bg-[#BCD4CC] text-[#002F45] scroll-smooth">
       <div className="w-full flex justify-center">
         <div className="w-full max-w-[1400px]">
 
@@ -86,9 +90,9 @@ export default function CapitalGainsTaxLanding() {
                 <a href="https://propertyinvestors.com.au" className="font-bold text-[#002F45] hover:text-[#E3A750]">propertyinvestors.com.au</a>
               </div>
               <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-[#002F45]">
-                <a href="#how" className="hover:text-[#E3A750]">How it works</a>
-                <a href="#why" className="hover:text-[#E3A750]">Why us</a>
-                <a href="#faq" className="hover:text-[#E3A750]">FAQ</a>
+                <a href="#how" onClick={(e) => handleScroll(e, "how")} className="hover:text-[#E3A750]">How it works</a>
+                <a href="#why" onClick={(e) => handleScroll(e, "why")} className="hover:text-[#E3A750]">Why us</a>
+                <a href="#faq" onClick={(e) => handleScroll(e, "faq")} className="hover:text-[#E3A750]">FAQ</a>
               </nav>
               <CTAButton>Book Free Session</CTAButton>
             </div>
@@ -98,7 +102,7 @@ export default function CapitalGainsTaxLanding() {
           <section className="relative overflow-hidden">
             <div className="commonninja_component pid-ac09a1f9-1fc0-487b-9296-44a74a6ff867">&nbsp;</div>
             <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#BCD4CC]/40 via-white to-[#BCD4CC]/20" />
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-14 pb-16 md:pt-20 md:pb-20 grid md:grid-cols-2 gap-10 items-center">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-14 pb-16 md:pt-20 md:pb-20 grid md:grid-cols-2 gap-10">
 
               {/* Hero Text */}
               <div>
