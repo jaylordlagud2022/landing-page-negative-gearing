@@ -203,7 +203,7 @@ export default function CapitalGainsTaxLanding() {
           </section>
 
           {/* FAQ */}
-          <section id="faq" className="py-16 bg-[#D0BA98]">
+          <section id="faq" className="bg-[#D0BA98]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <h2 className="text-3xl font-extrabold text-[#23140C]">FAQ</h2>
               <div className="mt-8 grid md:grid-cols-2 gap-6">
