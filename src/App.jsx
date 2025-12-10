@@ -33,16 +33,10 @@ export default function CapitalGainsTaxLanding() {
     };
     document.body.appendChild(hsScript);
 
-    const cnScript = document.createElement("script");
-    cnScript.src = "https://cdn.commoninja.com/sdk/latest/commonninja.js";
-    cnScript.defer = true;
-    document.body.appendChild(cnScript);
-
     const popupTimer = setTimeout(() => setShowWheel(true), 3000);
 
     return () => {
       document.body.removeChild(hsScript);
-      document.body.removeChild(cnScript);
       clearTimeout(popupTimer);
     };
   }, []);
@@ -99,8 +93,7 @@ export default function CapitalGainsTaxLanding() {
 
           {/* Hero */}
           <section className="relative overflow-hidden">
-            <div className="commonninja_component pid-ac09a1f9-1fc0-487b-9296-44a74a6ff867">&nbsp;</div>
-            <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#FFFEEC]/40 via-white to-[#FFFEEC]/20" />
+             <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#FFFEEC]/40 via-white to-[#FFFEEC]/20" />
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-14 pb-16 md:pt-20 md:pb-20 grid md:grid-cols-2 gap-10">
 
               {/* Hero Text */}
