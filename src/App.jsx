@@ -25,7 +25,7 @@ export default function CapitalGainsTaxLanding() {
       if (window.hbspt) {
         window.hbspt.forms.create({
           portalId: "46099113",
-          formId: "1279a88f-4336-418a-9093-a1359e5f6fcc",
+          formId: "e6b2577e-4c88-47e0-8369-4bca76eead59",
           region: "na1",
           target: "#hubspot-form"
         });
