@@ -1,5 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react"; 
-import propertyIcon from "./assets/propertyinvestors_icon.webp";
+import React, { useEffect, useMemo, useState } from "react";
 
 export default function CapitalGainsTaxLanding() {
   const deadline = useMemo(() => {
@@ -9,8 +8,6 @@ export default function CapitalGainsTaxLanding() {
   }, []);
 
   const [timeLeft, setTimeLeft] = useState(getTimeRemaining(deadline));
-  const [spotsLeft, setSpotsLeft] = useState(15);
-  const [showWheel, setShowWheel] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => setTimeLeft(getTimeRemaining(deadline)), 1000);
@@ -25,26 +22,14 @@ export default function CapitalGainsTaxLanding() {
       if (window.hbspt) {
         window.hbspt.forms.create({
           portalId: "46099113",
-          formId: "1279a88f-4336-418a-9093-a1359e5f6fcc",
+          formId: "7dfd0a9d-2c49-464d-b91f-4d2449e2c7f0",
           region: "na1",
           target: "#hubspot-form"
         });
       }
     };
     document.body.appendChild(hsScript);
-
-    const cnScript = document.createElement("script");
-    cnScript.src = "https://cdn.commoninja.com/sdk/latest/commonninja.js";
-    cnScript.defer = true;
-    document.body.appendChild(cnScript);
-
-    const popupTimer = setTimeout(() => setShowWheel(true), 3000);
-
-    return () => {
-      document.body.removeChild(hsScript);
-      document.body.removeChild(cnScript);
-      clearTimeout(popupTimer);
-    };
+    return () => document.body.removeChild(hsScript);
   }, []);
 
   function getTimeRemaining(end) {
@@ -59,23 +44,21 @@ export default function CapitalGainsTaxLanding() {
 
   const CTAButton = ({ children }) => (
     <a
-      href="https://meetings.hubspot.com/charlie-jesaulenko-ash"
-      target="_blank"
-      rel="noopener noreferrer"
+      href="#book"
       className="inline-flex items-center justify-center rounded-xl bg-[#E3A750] px-6 py-3 text-white font-semibold shadow-lg hover:brightness-110 transition"
+      onClick={(e) => {
+        e.preventDefault();
+        const el = document.getElementById("book");
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+          el.classList.add("highlight");
+          setTimeout(() => el.classList.remove("highlight"), 2000);
+        }
+      }}
     >
       {children}
     </a>
   );
-
-  // Smooth scroll handler
-  const handleScroll = (e, id) => {
-    e.preventDefault();
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
 
   return (
     <div className="min-h-screen bg-[#BCD4CC] text-[#002F45] scroll-smooth">
@@ -83,24 +66,21 @@ export default function CapitalGainsTaxLanding() {
         <div className="w-full max-w-[1400px]">
 
           {/* Header */}
-          <header className="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-[#002F45]">
+          <header className="sticky top-0 z-40 bg-[#BCD4CC]/90 backdrop-blur border-b border-[#002F45]">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <img src={propertyIcon} alt="PropertyInvestors Icon" className="h-9 w-9 object-contain" />
-                <a href="https://propertyinvestors.com.au" className="font-bold text-[#002F45] hover:text-[#E3A750]">propertyinvestors.com.au</a>
-              </div>
-              <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-[#002F45]">
-                <a href="#how" onClick={(e) => handleScroll(e, "how")} className="hover:text-[#E3A750]">How it works</a>
-                <a href="#why" onClick={(e) => handleScroll(e, "why")} className="hover:text-[#E3A750]">Why us</a>
-                <a href="#faq" onClick={(e) => handleScroll(e, "faq")} className="hover:text-[#E3A750]">FAQ</a>
+              {/* Menu */}
+              <nav className="flex items-center gap-6 text-sm font-medium text-[#E3A750]">
+                <a href="#how" onClick={(e) => { e.preventDefault(); document.getElementById("how").scrollIntoView({ behavior: "smooth" }); }} className="hover:text-[#002F45]">How it works</a>
+                <a href="#why" onClick={(e) => { e.preventDefault(); document.getElementById("why").scrollIntoView({ behavior: "smooth" }); }} className="hover:text-[#002F45]">Why us</a>
+                <a href="#faq" onClick={(e) => { e.preventDefault(); document.getElementById("faq").scrollIntoView({ behavior: "smooth" }); }} className="hover:text-[#002F45]">FAQ</a>
               </nav>
+
               <CTAButton>Book Free Session</CTAButton>
             </div>
           </header>
 
           {/* Hero */}
           <section className="relative overflow-hidden">
-            <div className="commonninja_component pid-ac09a1f9-1fc0-487b-9296-44a74a6ff867">&nbsp;</div>
             <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#BCD4CC]/40 via-white to-[#BCD4CC]/20" />
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-14 pb-16 md:pt-20 md:pb-20 grid md:grid-cols-2 gap-10">
 
@@ -126,26 +106,12 @@ export default function CapitalGainsTaxLanding() {
                 <h3 className="text-2xl font-bold mt-1">Custom CGT Plan</h3>
                 <p className="mt-2 text-sm text-[#002F45]">Discover how to minimise your capital gains legally and efficiently.</p>
                 <div id="hubspot-form" className="mt-4"></div>
-
-                {/* Scarcity */}
-                <div className="mt-5 grid grid-cols-2 gap-3">
-                  <div className="rounded-xl bg-[#BCD4CC]/30 border border-[#002F45] p-3 text-center">
-                    <div className="text-xs text-[#002F45]">Spots left this month</div>
-                    <div className="text-2xl font-extrabold text-[#E3A750]">{spotsLeft}</div>
-                  </div>
-                  <div className="rounded-xl bg-[#BCD4CC]/30 border border-[#002F45] p-3 text-center">
-                    <div className="text-xs text-[#002F45]">Offer ends in</div>
-                    <div className="text-sm font-bold">
-                      {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </section>
 
           {/* How It Works */}
-          <section id="how" className="py-16 bg-[#D7E5E2]">
+          <section id="how" className="bg-[#D7E5E2]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <h2 className="text-3xl font-extrabold text-[#002F45]">How It Works</h2>
               <div className="mt-8 grid md:grid-cols-3 gap-6">
@@ -185,7 +151,7 @@ export default function CapitalGainsTaxLanding() {
           </section>
 
           {/* FAQ */}
-          <section id="faq" className="py-16 bg-neutral-50">
+          <section id="faq" className="bg-neutral-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <h2 className="text-3xl font-extrabold">FAQ</h2>
               <div className="mt-8 grid md:grid-cols-2 gap-6">
@@ -217,7 +183,6 @@ export default function CapitalGainsTaxLanding() {
           {/* Footer */}
           <footer className="py-10 bg-[#002F45] text-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-              <div className="text-sm">© 2025 propertyinvestors.com.au. All rights reserved.</div>
               <div className="flex items-center gap-6 text-sm">
                 <a href="https://propertyinvestors.com.au/privacy-policy/" className="hover:text-[#E3A750]">Privacy Policy</a>
                 <a href="https://propertyinvestors.com.au/legal-statements/" className="hover:text-[#E3A750]">Terms</a>
@@ -228,6 +193,18 @@ export default function CapitalGainsTaxLanding() {
 
         </div>
       </div>
+
+      {/* Highlight effect style */}
+      <style>{`
+        .highlight {
+          animation: highlightAnim 2s ease;
+        }
+        @keyframes highlightAnim {
+          0% { box-shadow: 0 0 0 0 rgba(227,167,80,0.7); }
+          50% { box-shadow: 0 0 15px 5px rgba(227,167,80,0.7); }
+          100% { box-shadow: 0 0 0 0 rgba(227,167,80,0); }
+        }
+      `}</style>
     </div>
   );
 }
