@@ -1,5 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react"; 
-import propertyIcon from "./assets/propertyinvestors_icon.webp";
+import React, { useEffect, useMemo, useState } from "react";
 
 export default function CapitalGainsTaxLanding() {
   const deadline = useMemo(() => {
@@ -9,8 +8,6 @@ export default function CapitalGainsTaxLanding() {
   }, []);
 
   const [timeLeft, setTimeLeft] = useState(getTimeRemaining(deadline));
-  const [spotsLeft, setSpotsLeft] = useState(15);
-  const [showWheel, setShowWheel] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => setTimeLeft(getTimeRemaining(deadline)), 1000);
@@ -25,7 +22,7 @@ export default function CapitalGainsTaxLanding() {
       if (window.hbspt) {
         window.hbspt.forms.create({
           portalId: "46099113",
-          formId: "1279a88f-4336-418a-9093-a1359e5f6fcc",
+          formId: "508f426d-e2dd-4344-856b-a6e06dfe2668",
           region: "na1",
           target: "#hubspot-form"
         });
@@ -33,17 +30,8 @@ export default function CapitalGainsTaxLanding() {
     };
     document.body.appendChild(hsScript);
 
-    const cnScript = document.createElement("script");
-    cnScript.src = "https://cdn.commoninja.com/sdk/latest/commonninja.js";
-    cnScript.defer = true;
-    document.body.appendChild(cnScript);
-
-    const popupTimer = setTimeout(() => setShowWheel(true), 3000);
-
     return () => {
       document.body.removeChild(hsScript);
-      document.body.removeChild(cnScript);
-      clearTimeout(popupTimer);
     };
   }, []);
 
@@ -59,22 +47,21 @@ export default function CapitalGainsTaxLanding() {
 
   const CTAButton = ({ children }) => (
     <a
-      href="https://meetings.hubspot.com/charlie-jesaulenko-ash"
-      target="_blank"
-      rel="noopener noreferrer"
+      href="#hubspot-form"
+      onClick={(e) => {
+        e.preventDefault();
+        const el = document.getElementById("book");
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+          el.classList.add("highlight-form");
+          setTimeout(() => el.classList.remove("highlight-form"), 2000);
+        }
+      }}
       className="inline-flex items-center justify-center rounded-xl bg-[#E4281F] px-6 py-3 text-white font-semibold shadow-lg hover:brightness-110 transition"
     >
       {children}
     </a>
   );
-
-  const handleScroll = (e, id) => {
-    e.preventDefault();
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
 
   return (
     <div className="min-h-screen bg-[#FCEEC9] text-[#E4281F] scroll-smooth">
@@ -82,16 +69,13 @@ export default function CapitalGainsTaxLanding() {
         <div className="w-full max-w-[1400px]">
 
           {/* Header */}
-          <header className="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-[#E4281F]">
+          <header className="sticky top-0 z-40 bg-[#FCEEC9] border-b border-[#E4281F]">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <img src={propertyIcon} alt="PropertyInvestors Icon" className="h-9 w-9 object-contain" />
-                <a href="https://propertyinvestors.com.au" className="font-bold text-[#E4281F] hover:text-[#FFBE54]">propertyinvestors.com.au</a>
-              </div>
-              <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-[#E4281F]">
-                <a href="#how" onClick={(e) => handleScroll(e, "how")} className="hover:text-[#FFBE54]">How it works</a>
-                <a href="#why" onClick={(e) => handleScroll(e, "why")} className="hover:text-[#FFBE54]">Why us</a>
-                <a href="#faq" onClick={(e) => handleScroll(e, "faq")} className="hover:text-[#FFBE54]">FAQ</a>
+              {/* Menu instead of logo */}
+              <nav className="flex items-center gap-6 text-sm font-medium text-[#E4281F]">
+                <a href="#how" className="hover:text-[#E4281F]">How it works</a>
+                <a href="#why" className="hover:text-[#E4281F]">Why us</a>
+                <a href="#faq" className="hover:text-[#E4281F]">FAQ</a>
               </nav>
               <CTAButton>Book a Free Strategy Call</CTAButton>
             </div>
@@ -99,7 +83,6 @@ export default function CapitalGainsTaxLanding() {
 
           {/* Hero */}
           <section className="relative overflow-hidden">
-            <div className="commonninja_component pid-ac09a1f9-1fc0-487b-9296-44a74a6ff867">&nbsp;</div>
             <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#FCEEC9]/40 via-white to-[#FCEEC9]/20" />
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-14 pb-16 md:pt-20 md:pb-20 grid md:grid-cols-2 gap-10">
 
@@ -131,33 +114,18 @@ export default function CapitalGainsTaxLanding() {
                 <h3 className="text-2xl font-bold mt-1">Custom Property Plan</h3>
                 <p className="mt-2 text-sm text-[#E4281F]">Discover how to confidently start and grow your property portfolio.</p>
                 <div id="hubspot-form" className="mt-4"></div>
-
-                {/* Scarcity */}
-                <div className="mt-5 grid grid-cols-2 gap-3">
-                  <div className="rounded-xl bg-[#FCEEC9]/30 border border-[#E4281F] p-3 text-center">
-                    <div className="text-xs text-[#E4281F]">Spots left this month</div>
-                    <div className="text-2xl font-extrabold text-[#FFBE54]">{spotsLeft}</div>
-                  </div>
-                  <div className="rounded-xl bg-[#FCEEC9]/30 border border-[#E4281F] p-3 text-center">
-                    <div className="text-xs text-[#E4281F]">Offer ends in</div>
-                    <div className="text-sm font-bold">
-                      {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </section>
 
           {/* How It Works */}
-          <section id="how" className="py-16 bg-[#FCEEC9]">
+          <section id="how" className="bg-[#FCEEC9]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <h2 className="text-3xl font-extrabold text-[#E4281F]">How It Works</h2>
               <div className="mt-8 grid md:grid-cols-3 gap-6">
-                {[
-                  { step: "1", title: "Book Your Session", desc: "Pick a time that suits you for a free 30-min consultation." },
+                {[{ step: "1", title: "Book Your Session", desc: "Pick a time that suits you for a free 30-min consultation." },
                   { step: "2", title: "We Analyse Your Situation", desc: "Our team models your investment strategy and identifies opportunities." },
-                  { step: "3", title: "Receive Your Action Plan", desc: "Get a clear roadmap for confident property investing." },
+                  { step: "3", title: "Receive Your Action Plan", desc: "Get a clear roadmap for confident property investing." }
                 ].map((s, i) => (
                   <div key={i} className="rounded-2xl border border-[#E4281F] bg-white p-6 shadow-sm">
                     <div className="h-10 w-10 rounded-xl bg-[#FFBE54] text-white grid place-items-center font-bold">{s.step}</div>
@@ -174,10 +142,9 @@ export default function CapitalGainsTaxLanding() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <h2 className="text-3xl font-extrabold text-[#E4281F]">Why Work With Us</h2>
               <div className="mt-8 grid md:grid-cols-3 gap-6">
-                {[
-                  { title: "Expert Property Advice", desc: "Decades of experience helping Australians invest wisely." },
+                {[{ title: "Expert Property Advice", desc: "Decades of experience helping Australians invest wisely." },
                   { title: "Data-Driven Insights", desc: "We research the strongest markets for growth and rental returns." },
-                  { title: "Clear, Actionable Strategies", desc: "Step-by-step guidance to simplify investing and build confidence." },
+                  { title: "Clear, Actionable Strategies", desc: "Step-by-step guidance to simplify investing and build confidence." }
                 ].map((w, i) => (
                   <div key={i} className="rounded-2xl border border-[#E4281F] bg-white p-6 shadow-sm">
                     <div className="h-10 w-10 rounded-xl bg-[#FCEEC9] text-[#E4281F] grid place-items-center font-bold">{i+1}</div>
@@ -190,15 +157,14 @@ export default function CapitalGainsTaxLanding() {
           </section>
 
           {/* FAQ */}
-          <section id="faq" className="py-16 bg-[#FCEEC9]">
+          <section id="faq" className="bg-[#FCEEC9]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <h2 className="text-3xl font-extrabold text-[#E4281F]">FAQ</h2>
               <div className="mt-8 grid md:grid-cols-2 gap-6">
-                {[
-                  { q: "Do I need to be wealthy to invest?", a: "No, with the right guidance, anyone can start investing in property." },
+                {[{ q: "Do I need to be wealthy to invest?", a: "No, with the right guidance, anyone can start investing in property." },
                   { q: "How do I choose the right suburb?", a: "We research growth areas using infrastructure, migration, and rental demand trends." },
                   { q: "What if I’m a first-time investor?", a: "Our team guides you step-by-step from finance approval to purchase strategy." },
-                  { q: "Is this financial advice?", a: "This is general information. Always seek licensed advice for your specific situation." },
+                  { q: "Is this financial advice?", a: "This is general information. Always seek licensed advice for your specific situation." }
                 ].map((f, i) => (
                   <div key={i} className="rounded-2xl border border-[#FCEEC9] bg-white p-6 shadow-sm">
                     <h3 className="font-bold text-[#E4281F]">{f.q}</h3>
@@ -212,7 +178,6 @@ export default function CapitalGainsTaxLanding() {
           {/* Final CTA */}
           <section className="py-16">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-              <p className="text-xs text-[#E4281F]">General information only. Not financial advice. Past performance is not a reliable indicator of future results. Consider your circumstances and seek licensed advice before acting.</p>
               <div className="mt-6">
                 <CTAButton>Book a Free Strategy Call</CTAButton>
               </div>
@@ -222,17 +187,31 @@ export default function CapitalGainsTaxLanding() {
           {/* Footer */}
           <footer className="py-10 bg-[#E4281F] text-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-              <div className="text-sm">© 2025 propertyinvestors.com.au. All rights reserved.</div>
               <div className="flex items-center gap-6 text-sm">
                 <a href="https://propertyinvestors.com.au/privacy-policy/" className="hover:text-[#FFBE54]">Privacy Policy</a>
                 <a href="https://propertyinvestors.com.au/legal-statements/" className="hover:text-[#FFBE54]">Terms</a>
-                <a href="https://meetings.hubspot.com/charlie-jesaulenko-ash" className="hover:text-[#FFBE54]">Contact</a>
+                <a href="#hubspot-form" className="hover:text-[#FFBE54]">Contact</a>
               </div>
             </div>
           </footer>
 
         </div>
       </div>
+
+      {/* Highlight animation for form */}
+      <style>
+        {`
+          .highlight-form {
+            animation: highlightForm 2s ease-in-out;
+            border: 2px solid #FFBE54 !important;
+          }
+          @keyframes highlightForm {
+            0% { box-shadow: 0 0 0 #FFBE54; }
+            50% { box-shadow: 0 0 20px #FFBE54; }
+            100% { box-shadow: 0 0 0 #FFBE54; }
+          }
+        `}
+      </style>
     </div>
   );
 }
