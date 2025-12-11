@@ -1,5 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react"; 
-import propertyIcon from "./assets/propertyinvestors_icon.webp";
+import React, { useEffect, useMemo, useState } from "react";
 
 export default function CapitalGainsTaxLanding() {
   const deadline = useMemo(() => {
@@ -9,8 +8,6 @@ export default function CapitalGainsTaxLanding() {
   }, []);
 
   const [timeLeft, setTimeLeft] = useState(getTimeRemaining(deadline));
-  const [spotsLeft, setSpotsLeft] = useState(15);
-  const [showWheel, setShowWheel] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => setTimeLeft(getTimeRemaining(deadline)), 1000);
@@ -25,7 +22,7 @@ export default function CapitalGainsTaxLanding() {
       if (window.hbspt) {
         window.hbspt.forms.create({
           portalId: "46099113",
-          formId: "1279a88f-4336-418a-9093-a1359e5f6fcc",
+          formId: "02f828bf-96af-4557-a744-f0333669421b",
           region: "na1",
           target: "#hubspot-form"
         });
@@ -33,17 +30,8 @@ export default function CapitalGainsTaxLanding() {
     };
     document.body.appendChild(hsScript);
 
-    const cnScript = document.createElement("script");
-    cnScript.src = "https://cdn.commoninja.com/sdk/latest/commonninja.js";
-    cnScript.defer = true;
-    document.body.appendChild(cnScript);
-
-    const popupTimer = setTimeout(() => setShowWheel(true), 3000);
-
     return () => {
       document.body.removeChild(hsScript);
-      document.body.removeChild(cnScript);
-      clearTimeout(popupTimer);
     };
   }, []);
 
@@ -59,22 +47,21 @@ export default function CapitalGainsTaxLanding() {
 
   const CTAButton = ({ children }) => (
     <a
-      href="https://meetings.hubspot.com/charlie-jesaulenko-ash"
-      target="_blank"
-      rel="noopener noreferrer"
+      href="#hubspot-form"
+      onClick={(e) => {
+        e.preventDefault();
+        const el = document.getElementById("book");
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+          el.classList.add("highlight-form");
+          setTimeout(() => el.classList.remove("highlight-form"), 2000);
+        }
+      }}
       className="inline-flex items-center justify-center rounded-xl bg-[#E12826] px-6 py-3 text-white font-semibold shadow-lg hover:brightness-110 transition"
     >
       {children}
     </a>
   );
-
-  const handleScroll = (e, id) => {
-    e.preventDefault();
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
 
   return (
     <div className="min-h-screen bg-[#f5fafa] text-[#299f93] scroll-smooth">
@@ -82,24 +69,19 @@ export default function CapitalGainsTaxLanding() {
         <div className="w-full max-w-[1400px]">
 
           {/* Header */}
-          <header className="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-[#299f93]">
+          <header className="sticky top-0 z-40 bg-[#f5fafa] border-b border-[#E12826]">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <img src={propertyIcon} alt="PropertyInvestors Icon" className="h-9 w-9 object-contain" />
-                <a href="https://propertyinvestors.com.au" className="font-bold text-[#299f93] hover:text-[#E12826]">propertyinvestors.com.au</a>
-              </div>
-              <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-[#299f93]">
-                <a href="#how" onClick={(e) => handleScroll(e, "how")} className="hover:text-[#E12826]">How it works</a>
-                <a href="#why" onClick={(e) => handleScroll(e, "why")} className="hover:text-[#E12826]">Why us</a>
-                <a href="#faq" onClick={(e) => handleScroll(e, "faq")} className="hover:text-[#E12826]">FAQ</a>
+              <nav className="flex items-center gap-6 text-sm font-medium text-[#E12826]">
+                <a href="#how">How it works</a>
+                <a href="#why">Why us</a>
+                <a href="#faq">FAQ</a>
               </nav>
-              <CTAButton>Secure Your Strategy Session</CTAButton>
+              <CTAButton>Book a Free Strategy Call</CTAButton>
             </div>
           </header>
 
           {/* Hero */}
           <section className="relative overflow-hidden">
-            <div className="commonninja_component pid-ac09a1f9-1fc0-487b-9296-44a74a6ff867">&nbsp;</div>
             <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#f5fafa]/40 via-white to-[#f5fafa]/20" />
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-14 pb-16 md:pt-20 md:pb-20 grid md:grid-cols-2 gap-10">
 
@@ -132,31 +114,17 @@ export default function CapitalGainsTaxLanding() {
               </div>
 
               {/* HubSpot Form */}
-              <div id="book" className="bg-white rounded-2xl shadow-xl border border-[#299f93] p-6">
+              <div id="book" className="bg-white rounded-2xl shadow-xl border border-[#E12826] p-6">
                 <div className="text-sm font-semibold text-[#E12826]">FREE 30-Min Strategy Session</div>
                 <h3 className="text-2xl font-bold mt-1">Custom Property Plan</h3>
                 <p className="mt-2 text-sm text-[#299f93]">Discover how to confidently start and grow your property portfolio.</p>
                 <div id="hubspot-form" className="mt-4"></div>
-
-                {/* Scarcity */}
-                <div className="mt-5 grid grid-cols-2 gap-3">
-                  <div className="rounded-xl bg-[#f5fafa]/30 border border-[#299f93] p-3 text-center">
-                    <div className="text-xs text-[#299f93]">Spots left this month</div>
-                    <div className="text-2xl font-extrabold text-[#E12826]">{spotsLeft}</div>
-                  </div>
-                  <div className="rounded-xl bg-[#f5fafa]/30 border border-[#299f93] p-3 text-center">
-                    <div className="text-xs text-[#299f93]">Offer ends in</div>
-                    <div className="text-sm font-bold">
-                      {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </section>
 
           {/* How It Works */}
-          <section id="how" className="py-16 bg-[#f5fafa]">
+          <section id="how" className="bg-[#f5fafa]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <h2 className="text-3xl font-extrabold text-[#299f93]">How It Works</h2>
               <div className="mt-8 grid md:grid-cols-3 gap-6">
@@ -165,7 +133,7 @@ export default function CapitalGainsTaxLanding() {
                   { step: "2", title: "We Analyse Your Situation", desc: "Our team models your investment strategy and identifies opportunities." },
                   { step: "3", title: "Receive Your Action Plan", desc: "Get a clear roadmap for confident property investing." },
                 ].map((s, i) => (
-                  <div key={i} className="rounded-2xl border border-[#299f93] bg-white p-6 shadow-sm">
+                  <div key={i} className="rounded-2xl border border-[#E12826] bg-white p-6 shadow-sm">
                     <div className="h-10 w-10 rounded-xl bg-[#E12826] text-white grid place-items-center font-bold">{s.step}</div>
                     <h3 className="mt-4 font-bold text-lg text-[#299f93]">{s.title}</h3>
                     <p className="mt-1 text-[#299f93]">{s.desc}</p>
@@ -185,7 +153,7 @@ export default function CapitalGainsTaxLanding() {
                   { title: "Data-Driven Insights", desc: "We research the strongest markets for growth and rental returns." },
                   { title: "Clear, Actionable Strategies", desc: "Step-by-step guidance to simplify investing and build confidence." },
                 ].map((w, i) => (
-                  <div key={i} className="rounded-2xl border border-[#299f93] bg-white p-6 shadow-sm">
+                  <div key={i} className="rounded-2xl border border-[#E12826] bg-white p-6 shadow-sm">
                     <div className="h-10 w-10 rounded-xl bg-[#f5fafa] text-[#299f93] grid place-items-center font-bold">{i+1}</div>
                     <h3 className="mt-4 font-bold text-lg text-[#299f93]">{w.title}</h3>
                     <p className="mt-1 text-[#299f93]">{w.desc}</p>
@@ -196,7 +164,7 @@ export default function CapitalGainsTaxLanding() {
           </section>
 
           {/* FAQ */}
-          <section id="faq" className="py-16 bg-[#f5fafa]">
+          <section id="faq" className="bg-[#f5fafa]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <h2 className="text-3xl font-extrabold text-[#299f93]">FAQ</h2>
               <div className="mt-8 grid md:grid-cols-2 gap-6">
@@ -217,28 +185,39 @@ export default function CapitalGainsTaxLanding() {
 
           {/* Final CTA */}
           <section className="py-16">
-            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-              <p className="text-xs text-[#299f93]">General information only. Not financial advice. Past performance is not a reliable indicator of future results. Consider your circumstances and seek licensed advice before acting.</p>
-              <div className="mt-6">
-                <CTAButton>Secure Your Property Strategy Session Today</CTAButton>
-              </div>
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-6">
+              <CTAButton>Secure Your Property Strategy Session Today</CTAButton>
             </div>
           </section>
 
           {/* Footer */}
-          <footer className="py-10 bg-[#299f93] text-white">
+          <footer className="py-10 bg-[#E12826] text-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-              <div className="text-sm">© 2025 propertyinvestors.com.au. All rights reserved.</div>
               <div className="flex items-center gap-6 text-sm">
-                <a href="https://propertyinvestors.com.au/privacy-policy/" className="hover:text-[#E12826]">Privacy Policy</a>
-                <a href="https://propertyinvestors.com.au/legal-statements/" className="hover:text-[#E12826]">Terms</a>
-                <a href="https://meetings.hubspot.com/charlie-jesaulenko-ash" className="hover:text-[#E12826]">Contact</a>
+                <a href="https://propertyinvestors.com.au/privacy-policy/" className="hover:text-white/80">Privacy Policy</a>
+                <a href="https://propertyinvestors.com.au/legal-statements/" className="hover:text-white/80">Terms</a>
+                <a href="#hubspot-form" className="hover:text-white/80">Contact</a>
               </div>
             </div>
           </footer>
 
         </div>
       </div>
+
+      {/* Form highlight animation */}
+      <style>
+        {`
+          .highlight-form {
+            animation: highlightForm 2s ease-in-out;
+            border: 2px solid #E12826 !important;
+          }
+          @keyframes highlightForm {
+            0% { box-shadow: 0 0 0 #E12826; }
+            50% { box-shadow: 0 0 20px #E12826; }
+            100% { box-shadow: 0 0 0 #E12826; }
+          }
+        `}
+      </style>
     </div>
   );
 }
