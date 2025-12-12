@@ -102,7 +102,18 @@ export default function CapitalGainsTaxLanding() {
                   <span className="text-[#CBD83B]">By Building Wealth for Life.</span>
                 </h1>
                 <p className="mt-4 text-lg text-[#253E4C]">
-                  A step-by-step approach to achieving financial independence through property investing.
+                  Financial freedom means having choices to work less, travel more, and live life on your terms.
+                </p>
+                <p className="mt-4 text-lg text-[#002F45]">
+                  We help Australians create lasting wealth through property, using research-based strategies and personalised planning.
+                </p>
+                <p className="mt-2 text-[#002F45]">
+                  We’ll show you how to build a portfolio that generates income, reduces tax, and compounds in value over time.                 
+                </p>
+                <p className="mt-2 text-[#002F45]">
+                  Our process combines education, data, and coaching to help you make confident, independent investment decisions.
+
+                  Whether you’re starting out or ready to expand your portfolio, we’ll help you take the next step toward real financial independence.                
                 </p>
 
                 <div className="mt-6 flex flex-wrap items-center gap-4">
