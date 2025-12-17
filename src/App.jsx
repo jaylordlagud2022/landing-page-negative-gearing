@@ -8,74 +8,101 @@ export default function CapitalGainsTaxLanding() {
   }, []);
 
   const [timeLeft, setTimeLeft] = useState(getTimeRemaining(deadline));
+  const [spotsLeft, setSpotsLeft] = useState(15);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [hsLoaded, setHsLoaded] = useState(false);
 
   useEffect(() => {
-    const timer = setInterval(() => setTimeLeft(getTimeRemaining(deadline)), 1000);
+    const timer = setInterval(
+      () => setTimeLeft(getTimeRemaining(deadline)),
+      1000
+    );
     return () => clearInterval(timer);
   }, [deadline]);
 
+  /** Load HubSpot script */
   useEffect(() => {
     const hsScript = document.createElement("script");
     hsScript.src = "//js.hsforms.net/forms/embed/v2.js";
     hsScript.async = true;
-    hsScript.onload = () => {
-      if (window.hbspt) {
-        window.hbspt.forms.create({
-          portalId: "46099113",
-          formId: "39e29b3a-603e-4417-85cd-1c96406a37d0",
-          region: "na1",
-          target: "#hubspot-form"
-        });
-      }
-    };
+    hsScript.onload = () => setHsLoaded(true);
     document.body.appendChild(hsScript);
-
-    return () => {
-      document.body.removeChild(hsScript);
-    };
+    return () => document.body.removeChild(hsScript);
   }, []);
+
+  /** Inline form */
+  useEffect(() => {
+    if (!hsLoaded || !window.hbspt) return;
+    const target = document.getElementById("hubspot-form");
+    if (target && target.innerHTML.trim() === "") {
+      window.hbspt.forms.create({
+        portalId: "46099113",
+        formId: "39e29b3a-603e-4417-85cd-1c96406a37d0",
+        region: "na1",
+        target: "#hubspot-form",
+      });
+    }
+  }, [hsLoaded]);
+
+  /** Modal form */
+  useEffect(() => {
+    if (!modalOpen || !hsLoaded || !window.hbspt) return;
+    const target = document.getElementById("hubspot-form-modal");
+    if (target) {
+      target.innerHTML = "";
+      window.hbspt.forms.create({
+        portalId: "46099113",
+        formId: "39e29b3a-603e-4417-85cd-1c96406a37d0",
+        region: "na1",
+        target: "#hubspot-form-modal",
+      });
+    }
+  }, [modalOpen, hsLoaded]);
 
   function getTimeRemaining(end) {
     const total = end - Date.now();
     const clamped = Math.max(total, 0);
-    const seconds = Math.floor((clamped / 1000) % 60);
-    const minutes = Math.floor((clamped / 1000 / 60) % 60);
-    const hours = Math.floor((clamped / (1000 * 60 * 60)) % 24);
-    const days = Math.floor(clamped / (1000 * 60 * 60 * 24));
-    return { total: clamped, days, hours, minutes, seconds };
+    return {
+      total: clamped,
+      days: Math.floor(clamped / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((clamped / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((clamped / (1000 * 60)) % 60),
+      seconds: Math.floor((clamped / 1000) % 60),
+    };
   }
-
-  const highlightForm = () => {
-    const box = document.getElementById("book");
-    if (!box) return;
-    box.classList.add("ring-4", "ring-yellow-300");
-    setTimeout(() => {
-      box.classList.remove("ring-4", "ring-yellow-300");
-    }, 900);
-  };
 
   const CTAButton = ({ children }) => (
     <a
       href="#book"
       onClick={(e) => {
         e.preventDefault();
-        document.getElementById("book").scrollIntoView({ behavior: "smooth" });
-        highlightForm();
+        setModalOpen(true);
       }}
-      className="inline-flex items-center justify-center rounded-xl bg-[#6EABC6] px-6 py-3 text-white font-semibold shadow-lg hover:brightness-110 transition"
+      className="inline-flex items-center justify-center rounded-xl bg-[#A9CFE0] px-6 py-3
+      text-[#606F69] font-semibold shadow-lg hover:brightness-110 transition"
     >
       {children}
     </a>
   );
 
-  const handleScroll = (e, id) => {
-    e.preventDefault();
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-      if (id === "book") highlightForm();
-    }
-  };
+const handleScroll = (e, id) => {
+  e.preventDefault();
+
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  const offset = id === "why" ? 0 : 70; // 👈 no offset for #why
+
+  const y =
+    el.getBoundingClientRect().top +
+    window.pageYOffset -
+    offset;
+
+  window.scrollTo({
+    top: y,
+    behavior: "smooth",
+  });
+};
 
   return (
     <div className="min-h-screen bg-[#FFE16D] text-[#253E4C] scroll-smooth">
@@ -87,7 +114,7 @@ export default function CapitalGainsTaxLanding() {
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
 
               {/* Menu replaces logo */}
-              <nav className="flex items-center gap-6 text-sm font-medium" style={{ color: "#6EABC6" }}>
+              <nav className="flex items-center gap-6 text-sm font-medium" style={{ color: "#606F69" }}>
                 <a href="#how" onClick={(e) => handleScroll(e, "how")} className="hover:opacity-70">How it works</a>
                 <a href="#why" onClick={(e) => handleScroll(e, "why")} className="hover:opacity-70">Why us</a>
                 <a href="#faq" onClick={(e) => handleScroll(e, "faq")} className="hover:opacity-70">FAQ</a>
@@ -218,19 +245,68 @@ export default function CapitalGainsTaxLanding() {
             </div>
           </section>
 
-          {/* Footer — copyright removed */}
-          <footer className="py-10 bg-[#253E4C] text-white">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-6 text-sm">
-                <a href="https://propertyinvestors.com.au/privacy-policy/" className="hover:text-[#FFE16D]">Privacy Policy</a>
-                <a href="https://propertyinvestors.com.au/legal-statements/" className="hover:text-[#FFE16D]">Terms</a>
-                <a href="#book" onClick={(e) => handleScroll(e, "book")} className="hover:text-[#FFE16D]">Contact</a>
+          {/* FOOTER */}
+          <footer className="py-10 bg-[#606F69] text-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+              <div className="flex justify-center gap-6 text-sm">
+                <a href="https://propertyinvestors.com.au/privacy-policy/" className="hover:text-[#A9CFE0]">Privacy Policy</a>
+                <a href="https://propertyinvestors.com.au/legal-statements/" className="hover:text-[#A9CFE0]">Terms</a>
+                <a href="#book" onClick={(e) => handleScroll(e, "book")} className="hover:text-[#A9CFE0]">Contact</a>
               </div>
             </div>
           </footer>
 
+
         </div>
       </div>
+            {/* MODAL */}
+      {modalOpen && (
+        <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center px-4">
+          <div className="bg-white rounded-2xl shadow-xl border border-[#A9CFE0] w-full max-w-md relative">
+
+            {/* MODAL HEADER */}
+            <div className="flex items-start justify-between p-6 border-b border-[#A9CFE0]">
+                <h3 className="text-2xl font-bold mt-1 text-[#23140C]">Custom Debt-Free Plan</h3>
+ 
+              <button
+                onClick={() => setModalOpen(false)}
+                className="text-2xl leading-none text-[#606F69] hover:text-[#A9CFE0]"
+                aria-label="Close modal"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* MODAL BODY */}
+            <div className="p-6">
+              <div id="hubspot-form-modal"></div>
+
+              {/* SPOTS + COUNTDOWN */}
+              <div className="mt-5 grid grid-cols-2 gap-3">
+                <div className="rounded-xl bg-neutral-50 border p-3 text-center">
+                  <div className="text-xs text-neutral-500">
+                    Spots left this month
+                  </div>
+                  <div className="text-2xl font-extrabold text-orange-700">
+                    {spotsLeft}
+                  </div>
+                </div>
+
+                <div className="rounded-xl bg-neutral-50 border p-3 text-center">
+                  <div className="text-xs text-neutral-500">
+                    Offer ends in
+                  </div>
+                  <div className="text-sm font-bold">
+                    {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m{" "}
+                    {timeLeft.seconds}s
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      )}
     </div>
   );
 }
