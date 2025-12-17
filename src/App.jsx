@@ -78,8 +78,8 @@ export default function CapitalGainsTaxLanding() {
         e.preventDefault();
         setModalOpen(true);
       }}
-      className="inline-flex items-center justify-center rounded-xl bg-[#A9CFE0] px-6 py-3
-      text-[#606F69] font-semibold shadow-lg hover:brightness-110 transition"
+      className="inline-flex items-center justify-center rounded-xl bg-[#1C393F] px-6 py-3
+      text-white font-semibold shadow-lg hover:brightness-110 transition"
     >
       {children}
     </a>
