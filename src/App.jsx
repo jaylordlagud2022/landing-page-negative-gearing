@@ -128,7 +128,7 @@ const handleScroll = (e, id) => {
           {/* Hero */}
           <section className="relative overflow-hidden">
             <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#FFFEEC]/40 via-white to-[#FFFEEC]/20" />
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-14 pb-16 md:pt-20 md:pb-20 grid md:grid-cols-2 gap-10">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-14 pb-16 md:pb-20 grid md:grid-cols-2 gap-10">
 
               {/* Hero Text */}
               <div>
