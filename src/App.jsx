@@ -8,57 +8,102 @@ export default function CapitalGainsTaxLanding() {
   }, []);
 
   const [timeLeft, setTimeLeft] = useState(getTimeRemaining(deadline));
+  const [spotsLeft, setSpotsLeft] = useState(15);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [hsLoaded, setHsLoaded] = useState(false);
 
   useEffect(() => {
-    const timer = setInterval(() => setTimeLeft(getTimeRemaining(deadline)), 1000);
+    const timer = setInterval(
+      () => setTimeLeft(getTimeRemaining(deadline)),
+      1000
+    );
     return () => clearInterval(timer);
   }, [deadline]);
 
+  /** Load HubSpot script */
   useEffect(() => {
     const hsScript = document.createElement("script");
     hsScript.src = "//js.hsforms.net/forms/embed/v2.js";
     hsScript.async = true;
-    hsScript.onload = () => {
-      if (window.hbspt) {
-        window.hbspt.forms.create({
-          portalId: "46099113",
-          formId: "7dfd0a9d-2c49-464d-b91f-4d2449e2c7f0",
-          region: "na1",
-          target: "#hubspot-form"
-        });
-      }
-    };
+    hsScript.onload = () => setHsLoaded(true);
     document.body.appendChild(hsScript);
     return () => document.body.removeChild(hsScript);
   }, []);
 
+  /** Inline form */
+  useEffect(() => {
+    if (!hsLoaded || !window.hbspt) return;
+    const target = document.getElementById("hubspot-form");
+    if (target && target.innerHTML.trim() === "") {
+      window.hbspt.forms.create({
+        portalId: "46099113",
+        formId: "7dfd0a9d-2c49-464d-b91f-4d2449e2c7f0",
+        region: "na1",
+        target: "#hubspot-form",
+      });
+    }
+  }, [hsLoaded]);
+
+  /** Modal form */
+  useEffect(() => {
+    if (!modalOpen || !hsLoaded || !window.hbspt) return;
+    const target = document.getElementById("hubspot-form-modal");
+    if (target) {
+      target.innerHTML = "";
+      window.hbspt.forms.create({
+        portalId: "46099113",
+        formId: "7dfd0a9d-2c49-464d-b91f-4d2449e2c7f0",
+        region: "na1",
+        target: "#hubspot-form-modal",
+      });
+    }
+  }, [modalOpen, hsLoaded]);
+
   function getTimeRemaining(end) {
     const total = end - Date.now();
     const clamped = Math.max(total, 0);
-    const seconds = Math.floor((clamped / 1000) % 60);
-    const minutes = Math.floor((clamped / 1000 / 60) % 60);
-    const hours = Math.floor((clamped / (1000 * 60 * 60)) % 24);
-    const days = Math.floor(clamped / (1000 * 60 * 60 * 24));
-    return { total: clamped, days, hours, minutes, seconds };
+    return {
+      total: clamped,
+      days: Math.floor(clamped / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((clamped / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((clamped / (1000 * 60)) % 60),
+      seconds: Math.floor((clamped / 1000) % 60),
+    };
   }
 
   const CTAButton = ({ children }) => (
     <a
       href="#book"
-      className="inline-flex items-center justify-center rounded-xl bg-[#E3A750] px-6 py-3 text-white font-semibold shadow-lg hover:brightness-110 transition"
       onClick={(e) => {
         e.preventDefault();
-        const el = document.getElementById("book");
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-          el.classList.add("highlight");
-          setTimeout(() => el.classList.remove("highlight"), 2000);
-        }
+        setModalOpen(true);
       }}
+      className="inline-flex items-center justify-center rounded-xl bg-[#E3A750] px-6 py-3
+      text-white font-semibold shadow-lg hover:brightness-110 transition"
     >
       {children}
     </a>
   );
+
+const handleScroll = (e, id) => {
+  e.preventDefault();
+
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  const offset = id === "why" ? 70 : 70; // 👈 no offset for #why
+
+  const y =
+    el.getBoundingClientRect().top +
+    window.pageYOffset -
+    offset;
+
+  window.scrollTo({
+    top: y,
+    behavior: "smooth",
+  });
+};
+
 
   return (
     <div className="min-h-screen bg-[#BCD4CC] text-[#002F45] scroll-smooth">
@@ -70,9 +115,9 @@ export default function CapitalGainsTaxLanding() {
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
               {/* Menu */}
               <nav className="flex items-center gap-6 text-sm font-medium text-[#E3A750]">
-                <a href="#how" onClick={(e) => { e.preventDefault(); document.getElementById("how").scrollIntoView({ behavior: "smooth" }); }} className="hover:text-[#002F45]">How it works</a>
-                <a href="#why" onClick={(e) => { e.preventDefault(); document.getElementById("why").scrollIntoView({ behavior: "smooth" }); }} className="hover:text-[#002F45]">Why us</a>
-                <a href="#faq" onClick={(e) => { e.preventDefault(); document.getElementById("faq").scrollIntoView({ behavior: "smooth" }); }} className="hover:text-[#002F45]">FAQ</a>
+                <a href="#how" onClick={(e) => handleScroll(e, "how")} className="hover:opacity-70">How it works</a>
+                <a href="#why" onClick={(e) => handleScroll(e, "why")} className="hover:opacity-70">Why us</a>
+                <a href="#faq" onClick={(e) => handleScroll(e, "faq")} className="hover:opacity-70">FAQ</a>
               </nav>
 
               <CTAButton>Book Free Session</CTAButton>
@@ -82,7 +127,7 @@ export default function CapitalGainsTaxLanding() {
           {/* Hero */}
           <section className="relative overflow-hidden">
             <div className="absolute inset-0 -z-10 bg-gradient-to-br from-[#BCD4CC]/40 via-white to-[#BCD4CC]/20" />
-            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-14 pb-16 md:pt-20 md:pb-20 grid md:grid-cols-2 gap-10">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-14 pb-16 md:pb-20 grid md:grid-cols-2 gap-10">
 
               {/* Hero Text */}
               <div>
@@ -106,12 +151,26 @@ export default function CapitalGainsTaxLanding() {
                 <h3 className="text-2xl font-bold mt-1">Custom CGT Plan</h3>
                 <p className="mt-2 text-sm text-[#002F45]">Discover how to minimise your capital gains legally and efficiently.</p>
                 <div id="hubspot-form" className="mt-4"></div>
+
+                <div className="mt-5 grid grid-cols-2 gap-3">
+                  <div className="rounded-xl bg-neutral-50 border p-3 text-center">
+                    <div className="text-xs text-neutral-500">Spots left this month</div>
+                    <div className="text-2xl font-extrabold text-orange-700">{spotsLeft}</div>
+                  </div>
+                  <div className="rounded-xl bg-neutral-50 border p-3 text-center">
+                    <div className="text-xs text-neutral-500">Offer ends in</div>
+                    <div className="text-sm font-bold">
+                      {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
           </section>
 
           {/* How It Works */}
-          <section id="how" className="bg-[#D7E5E2]">
+          <section id="how" >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <h2 className="text-3xl font-extrabold text-[#002F45]">How It Works</h2>
               <div className="mt-8 grid md:grid-cols-3 gap-6">
@@ -151,7 +210,7 @@ export default function CapitalGainsTaxLanding() {
           </section>
 
           {/* FAQ */}
-          <section id="faq" className="bg-neutral-50">
+          <section id="faq" >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <h2 className="text-3xl font-extrabold">FAQ</h2>
               <div className="mt-8 grid md:grid-cols-2 gap-6">
@@ -181,12 +240,13 @@ export default function CapitalGainsTaxLanding() {
           </section>
 
           {/* Footer */}
-          <footer className="py-10 bg-[#002F45] text-white">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-6 text-sm">
-                <a href="https://propertyinvestors.com.au/privacy-policy/" className="hover:text-[#E3A750]">Privacy Policy</a>
-                <a href="https://propertyinvestors.com.au/legal-statements/" className="hover:text-[#E3A750]">Terms</a>
-                <a href="https://meetings.hubspot.com/charlie-jesaulenko-ash" className="hover:text-[#E3A750]">Contact</a>
+
+          <footer className="py-10 bg-[#1C393F] text-white">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+              <div className="flex justify-center gap-6 text-sm">
+                <a href="https://propertyinvestors.com.au/privacy-policy/" className="hover:text-[#A9CFE0]">Privacy Policy</a>
+                <a href="https://propertyinvestors.com.au/legal-statements/" className="hover:text-[#A9CFE0]">Terms</a>
+                <a href="#book" onClick={(e) => handleScroll(e, "book")} className="hover:text-[#A9CFE0]">Contact</a>
               </div>
             </div>
           </footer>
@@ -194,17 +254,54 @@ export default function CapitalGainsTaxLanding() {
         </div>
       </div>
 
-      {/* Highlight effect style */}
-      <style>{`
-        .highlight {
-          animation: highlightAnim 2s ease;
-        }
-        @keyframes highlightAnim {
-          0% { box-shadow: 0 0 0 0 rgba(227,167,80,0.7); }
-          50% { box-shadow: 0 0 15px 5px rgba(227,167,80,0.7); }
-          100% { box-shadow: 0 0 0 0 rgba(227,167,80,0); }
-        }
-      `}</style>
+            {/* MODAL */}
+      {modalOpen && (
+        <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center px-4">
+          <div className="bg-white rounded-2xl shadow-xl border border-[#A9CFE0] w-full max-w-md relative">
+
+            {/* MODAL HEADER */}
+            <div className="flex items-start justify-between p-6 border-b border-[#A9CFE0]">
+                <h3 className="text-2xl font-bold mt-1 text-[#1C393F]">Custom CGT Plan</h3>
+ 
+              <button
+                onClick={() => setModalOpen(false)}
+                className="text-2xl leading-none text-[#606F69] hover:text-[#A9CFE0]"
+                aria-label="Close modal"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* MODAL BODY */}
+            <div className="p-6">
+              <div id="hubspot-form-modal"></div>
+
+              {/* SPOTS + COUNTDOWN */}
+              <div className="mt-5 grid grid-cols-2 gap-3">
+                <div className="rounded-xl bg-neutral-50 border p-3 text-center">
+                  <div className="text-xs text-neutral-500">
+                    Spots left this month
+                  </div>
+                  <div className="text-2xl font-extrabold text-orange-700">
+                    {spotsLeft}
+                  </div>
+                </div>
+
+                <div className="rounded-xl bg-neutral-50 border p-3 text-center">
+                  <div className="text-xs text-neutral-500">
+                    Offer ends in
+                  </div>
+                  <div className="text-sm font-bold">
+                    {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m{" "}
+                    {timeLeft.seconds}s
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      )}
     </div>
   );
 }
