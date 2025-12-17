@@ -78,8 +78,8 @@ export default function CapitalGainsTaxLanding() {
         e.preventDefault();
         setModalOpen(true);
       }}
-      className="inline-flex items-center justify-center rounded-xl bg-[#A9CFE0] px-6 py-3
-      text-[#606F69] font-semibold shadow-lg hover:brightness-110 transition"
+      className="inline-flex items-center justify-center rounded-xl bg-[#CBD83B] px-6 py-3
+      text-white font-semibold shadow-lg hover:brightness-110 transition"
     >
       {children}
     </a>
@@ -271,7 +271,11 @@ const handleScroll = (e, id) => {
               <div className="flex justify-center gap-6 text-sm">
                 <a href="https://propertyinvestors.com.au/privacy-policy/" className="hover:text-[#A9CFE0]">Privacy Policy</a>
                 <a href="https://propertyinvestors.com.au/legal-statements/" className="hover:text-[#A9CFE0]">Terms</a>
-                <a href="#book" onClick={(e) => handleScroll(e, "book")} className="hover:text-[#A9CFE0]">Contact</a>
+                <a href="#book"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setModalOpen(true);
+                  }} className="hover:text-[#A9CFE0]">Contact</a>
               </div>
             </div>
           </footer>
@@ -285,7 +289,7 @@ const handleScroll = (e, id) => {
 
             {/* MODAL HEADER */}
             <div className="flex items-start justify-between p-6 border-b border-[#A9CFE0]">
-                <h3 className="text-2xl font-bold mt-1 text-[#23140C]">Custom Wealth Plan</h3>
+                <h3 className="text-2xl font-bold mt-1 text-[#A88AED]">Custom Wealth Plan</h3>
  
               <button
                 onClick={() => setModalOpen(false)}
