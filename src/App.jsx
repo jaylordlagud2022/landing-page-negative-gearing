@@ -78,8 +78,8 @@ export default function CapitalGainsTaxLanding() {
         e.preventDefault();
         setModalOpen(true);
       }}
-      className="inline-flex items-center justify-center rounded-xl bg-[#A9CFE0] px-6 py-3
-      text-[#606F69] font-semibold shadow-lg hover:brightness-110 transition"
+      className="inline-flex items-center justify-center rounded-xl bg-[#91040c] px-6 py-3
+      text-white font-semibold shadow-lg hover:brightness-110 transition"
     >
       {children}
     </a>
@@ -268,12 +268,16 @@ const handleScroll = (e, id) => {
 
 
           {/* FOOTER */}
-          <footer className="py-10 bg-[#606F69] text-white">
+          <footer className="py-10 bg-[#23140C] text-white">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
               <div className="flex justify-center gap-6 text-sm">
                 <a href="https://propertyinvestors.com.au/privacy-policy/" className="hover:text-[#A9CFE0]">Privacy Policy</a>
                 <a href="https://propertyinvestors.com.au/legal-statements/" className="hover:text-[#A9CFE0]">Terms</a>
-                <a href="#book" onClick={(e) => handleScroll(e, "book")} className="hover:text-[#A9CFE0]">Contact</a>
+                <a href="#book"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setModalOpen(true);
+                    }} className="hover:text-[#A9CFE0]">Contact</a>
               </div>
             </div>
           </footer>
