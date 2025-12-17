@@ -85,14 +85,24 @@ export default function CapitalGainsTaxLanding() {
     </a>
   );
 
-  const handleScroll = (e, id) => {
-    e.preventDefault();
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
-    el.classList.add("ring-4", "ring-[#A9CFE0]");
-    setTimeout(() => el.classList.remove("ring-4", "ring-[#A9CFE0]"), 1200);
-  };
+const handleScroll = (e, id) => {
+  e.preventDefault();
+
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  const offset = id === "why" ? 40 : 70; // 👈 no offset for #why
+
+  const y =
+    el.getBoundingClientRect().top +
+    window.pageYOffset -
+    offset;
+
+  window.scrollTo({
+    top: y,
+    behavior: "smooth",
+  });
+};
 
   return (
     <div className="min-h-screen bg-[#F3F3E3] text-[#606F69] scroll-smooth">
