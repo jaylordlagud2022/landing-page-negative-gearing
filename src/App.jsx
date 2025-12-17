@@ -8,60 +8,101 @@ export default function CapitalGainsTaxLanding() {
   }, []);
 
   const [timeLeft, setTimeLeft] = useState(getTimeRemaining(deadline));
+  const [spotsLeft, setSpotsLeft] = useState(15);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [hsLoaded, setHsLoaded] = useState(false);
 
   useEffect(() => {
-    const timer = setInterval(() => setTimeLeft(getTimeRemaining(deadline)), 1000);
+    const timer = setInterval(
+      () => setTimeLeft(getTimeRemaining(deadline)),
+      1000
+    );
     return () => clearInterval(timer);
   }, [deadline]);
 
+  /** Load HubSpot script */
   useEffect(() => {
     const hsScript = document.createElement("script");
     hsScript.src = "//js.hsforms.net/forms/embed/v2.js";
     hsScript.async = true;
-    hsScript.onload = () => {
-      if (window.hbspt) {
-        window.hbspt.forms.create({
-          portalId: "46099113",
-          formId: "02f828bf-96af-4557-a744-f0333669421b",
-          region: "na1",
-          target: "#hubspot-form"
-        });
-      }
-    };
+    hsScript.onload = () => setHsLoaded(true);
     document.body.appendChild(hsScript);
-
-    return () => {
-      document.body.removeChild(hsScript);
-    };
+    return () => document.body.removeChild(hsScript);
   }, []);
+
+  /** Inline form */
+  useEffect(() => {
+    if (!hsLoaded || !window.hbspt) return;
+    const target = document.getElementById("hubspot-form");
+    if (target && target.innerHTML.trim() === "") {
+      window.hbspt.forms.create({
+        portalId: "46099113",
+        formId: "02f828bf-96af-4557-a744-f0333669421b",
+        region: "na1",
+        target: "#hubspot-form",
+      });
+    }
+  }, [hsLoaded]);
+
+  /** Modal form */
+  useEffect(() => {
+    if (!modalOpen || !hsLoaded || !window.hbspt) return;
+    const target = document.getElementById("hubspot-form-modal");
+    if (target) {
+      target.innerHTML = "";
+      window.hbspt.forms.create({
+        portalId: "46099113",
+        formId: "02f828bf-96af-4557-a744-f0333669421b",
+        region: "na1",
+        target: "#hubspot-form-modal",
+      });
+    }
+  }, [modalOpen, hsLoaded]);
 
   function getTimeRemaining(end) {
     const total = end - Date.now();
     const clamped = Math.max(total, 0);
-    const seconds = Math.floor((clamped / 1000) % 60);
-    const minutes = Math.floor((clamped / 1000 / 60) % 60);
-    const hours = Math.floor((clamped / (1000 * 60 * 60)) % 24);
-    const days = Math.floor(clamped / (1000 * 60 * 60 * 24));
-    return { total: clamped, days, hours, minutes, seconds };
+    return {
+      total: clamped,
+      days: Math.floor(clamped / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((clamped / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((clamped / (1000 * 60)) % 60),
+      seconds: Math.floor((clamped / 1000) % 60),
+    };
   }
 
   const CTAButton = ({ children }) => (
     <a
-      href="#hubspot-form"
+      href="#book"
       onClick={(e) => {
         e.preventDefault();
-        const el = document.getElementById("book");
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-          el.classList.add("highlight-form");
-          setTimeout(() => el.classList.remove("highlight-form"), 2000);
-        }
+        setModalOpen(true);
       }}
-      className="inline-flex items-center justify-center rounded-xl bg-[#E12826] px-6 py-3 text-white font-semibold shadow-lg hover:brightness-110 transition"
+      className="inline-flex items-center justify-center rounded-xl bg-[#A9CFE0] px-6 py-3
+      text-[#606F69] font-semibold shadow-lg hover:brightness-110 transition"
     >
       {children}
     </a>
   );
+
+const handleScroll = (e, id) => {
+  e.preventDefault();
+
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  const offset = id === "why" ? 0 : 70; // 👈 no offset for #why
+
+  const y =
+    el.getBoundingClientRect().top +
+    window.pageYOffset -
+    offset;
+
+  window.scrollTo({
+    top: y,
+    behavior: "smooth",
+  });
+};
 
   return (
     <div className="min-h-screen bg-[#f5fafa] text-[#299f93] scroll-smooth">
@@ -71,11 +112,12 @@ export default function CapitalGainsTaxLanding() {
           {/* Header */}
           <header className="sticky top-0 z-40 bg-[#f5fafa] border-b border-[#E12826]">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-              <nav className="flex items-center gap-6 text-sm font-medium text-[#E12826]">
-                <a href="#how">How it works</a>
-                <a href="#why">Why us</a>
-                <a href="#faq">FAQ</a>
+              <nav className="flex items-center gap-6 text-sm font-medium" style={{ color: "#E12826" }}>
+                <a href="#how" onClick={(e) => handleScroll(e, "how")} className="hover:opacity-70">How it works</a>
+                <a href="#why" onClick={(e) => handleScroll(e, "why")} className="hover:opacity-70">Why us</a>
+                <a href="#faq" onClick={(e) => handleScroll(e, "faq")} className="hover:opacity-70">FAQ</a>
               </nav>
+              
               <CTAButton>Book a Free Strategy Call</CTAButton>
             </div>
           </header>
@@ -119,6 +161,21 @@ export default function CapitalGainsTaxLanding() {
                 <h3 className="text-2xl font-bold mt-1">Custom Property Plan</h3>
                 <p className="mt-2 text-sm text-[#299f93]">Discover how to confidently start and grow your property portfolio.</p>
                 <div id="hubspot-form" className="mt-4"></div>
+
+
+                <div className="mt-5 grid grid-cols-2 gap-3">
+                  <div className="rounded-xl bg-neutral-50 border p-3 text-center">
+                    <div className="text-xs text-neutral-500">Spots left this month</div>
+                    <div className="text-2xl font-extrabold text-orange-700">{spotsLeft}</div>
+                  </div>
+                  <div className="rounded-xl bg-neutral-50 border p-3 text-center">
+                    <div className="text-xs text-neutral-500">Offer ends in</div>
+                    <div className="text-sm font-bold">
+                      {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
+                    </div>
+                  </div>
+                </div>
+      
               </div>
             </div>
           </section>
@@ -190,13 +247,12 @@ export default function CapitalGainsTaxLanding() {
             </div>
           </section>
 
-          {/* Footer */}
           <footer className="py-10 bg-[#E12826] text-white">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
-              <div className="flex items-center gap-6 text-sm">
-                <a href="https://propertyinvestors.com.au/privacy-policy/" className="hover:text-white/80">Privacy Policy</a>
-                <a href="https://propertyinvestors.com.au/legal-statements/" className="hover:text-white/80">Terms</a>
-                <a href="#hubspot-form" className="hover:text-white/80">Contact</a>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+              <div className="flex justify-center gap-6 text-sm">
+                <a href="https://propertyinvestors.com.au/privacy-policy/" className="hover:text-[#A9CFE0]">Privacy Policy</a>
+                <a href="https://propertyinvestors.com.au/legal-statements/" className="hover:text-[#A9CFE0]">Terms</a>
+                <a href="#book" onClick={(e) => handleScroll(e, "book")} className="hover:text-[#A9CFE0]">Contact</a>
               </div>
             </div>
           </footer>
@@ -204,20 +260,54 @@ export default function CapitalGainsTaxLanding() {
         </div>
       </div>
 
-      {/* Form highlight animation */}
-      <style>
-        {`
-          .highlight-form {
-            animation: highlightForm 2s ease-in-out;
-            border: 2px solid #E12826 !important;
-          }
-          @keyframes highlightForm {
-            0% { box-shadow: 0 0 0 #E12826; }
-            50% { box-shadow: 0 0 20px #E12826; }
-            100% { box-shadow: 0 0 0 #E12826; }
-          }
-        `}
-      </style>
+            {/* MODAL */}
+      {modalOpen && (
+        <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center px-4">
+          <div className="bg-white rounded-2xl shadow-xl border border-[#A9CFE0] w-full max-w-md relative">
+
+            {/* MODAL HEADER */}
+            <div className="flex items-start justify-between p-6 border-b border-[#A9CFE0]">
+                <h3 className="text-2xl font-bold mt-1 text-[#E4281F]">Custom Property Plan</h3>
+ 
+              <button
+                onClick={() => setModalOpen(false)}
+                className="text-2xl leading-none text-[#606F69] hover:text-[#A9CFE0]"
+                aria-label="Close modal"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* MODAL BODY */}
+            <div className="p-6">
+              <div id="hubspot-form-modal"></div>
+
+              {/* SPOTS + COUNTDOWN */}
+              <div className="mt-5 grid grid-cols-2 gap-3">
+                <div className="rounded-xl bg-neutral-50 border p-3 text-center">
+                  <div className="text-xs text-neutral-500">
+                    Spots left this month
+                  </div>
+                  <div className="text-2xl font-extrabold text-orange-700">
+                    {spotsLeft}
+                  </div>
+                </div>
+
+                <div className="rounded-xl bg-neutral-50 border p-3 text-center">
+                  <div className="text-xs text-neutral-500">
+                    Offer ends in
+                  </div>
+                  <div className="text-sm font-bold">
+                    {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m{" "}
+                    {timeLeft.seconds}s
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      )}
     </div>
   );
 }
