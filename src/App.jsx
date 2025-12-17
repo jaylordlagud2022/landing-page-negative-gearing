@@ -79,7 +79,7 @@ export default function CapitalGainsTaxLanding() {
         setModalOpen(true);
       }}
       className="inline-flex items-center justify-center rounded-xl bg-[#A9CFE0] px-6 py-3
-      text-[#606F69] font-semibold shadow-lg hover:brightness-110 transition"
+      text-white font-semibold shadow-lg hover:brightness-110 transition"
     >
       {children}
     </a>
@@ -271,10 +271,10 @@ const handleScroll = (e, id) => {
               {/* SPOTS + COUNTDOWN */}
               <div className="mt-5 grid grid-cols-2 gap-3">
                 <div className="rounded-xl bg-neutral-50 border p-3 text-center">
-                  <div className="text-xs text-neutral-500">
+                  <div className="text-xs text-[neutral-500]">
                     Spots left this month
                   </div>
-                  <div className="text-2xl font-extrabold text-orange-700">
+                  <div className="text-2xl font-extrabold text-[#606F69]-700">
                     {spotsLeft}
                   </div>
                 </div>
